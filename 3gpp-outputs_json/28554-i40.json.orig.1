@@ -1,0 +1,669 @@
+[
+	{
+		"Name": "AMFMeanRegNbr",
+		"Description": "This KPI describe the mean number of subscribers that are registered\n to a network slice instance. It is obtained by counting the subscribers\n in AMF that are registered to a network slice instance. It is an\n Integer. The KPI type is MEAN.",
+		"Formula": "![](./attachments/28552-i50/media/image3.png)![](./attachments/28552-i50/media/image3.png)",
+		"KPI Object": "SubNetwork, NetworkSlice",
+		"Section": "Accessibility KPI (6.2) >> Registered subscribers of network through UDM (6.2.2)",
+		"Title": "Registered subscribers of network through UDM (6.2.2)"
+	},
+	{
+		"Name": "UDMRegNbr",
+		"Description": "This KPI describe the total number of subscribers that are\n registered to a network through UDM. It is corresponding to the\n measurement RM.RegisteredSubUDMNbrMean that counts subscribers\n registered in UDM. It is an Integer. The KPI type is MEAN.",
+		"Formula": "![](./attachments/28552-i50/media/image4.png)![](./attachments/28552-i50/media/image4.png)",
+		"KPI Object": "SubNetwork",
+		"Section": "Accessibility KPI (6.2) >> Registration success rate of one single network slice  (6.2.3)",
+		"Title": "Registration success rate of one single network slice  (6.2.3)"
+	},
+	{
+		"Name": "RSR",
+		"Description": "This KPI describes the ratio of the number of successfully performed\n registration procedures to the number of attempted registration\n procedures for the AMF set which related to one single network slice and\n is used to evaluate accessibility provided by the end-to-end network\n slice and network performance. It is obtained by successful registration\n procedures divided by attempted registration procedures. It is a\n percentage. The KPI type is RATIO.",
+		"Formula": "> Note: Above measurements with subcounter .*Type* should be defined in\n > 3GPP TS 24.501 \\[4\\].",
+		"KPI Object": "NetworkSlice",
+		"Section": "Accessibility KPI (6.2) >> Partial DRB Accessibility for UE services (6.2.4)",
+		"Title": "Partial DRB Accessibility for UE services (6.2.4)"
+	},
+	{
+		"Name": "Partial DRB Accessibility",
+		"Description": "This KPI describes the DRBs setup success rate, including the\n success rate for setting up RRC connection and NG signalling connection.\n It is obtained as the succeess rate for RRC connection setup multiplied\n by the success rate for NG signalling connection setup multiplied by the\n success rate for DRB setup. The success rate for RRC connection setup\n and for NG signalling connection setup shall exclude setups with\n establishment cause mo-Signalling \\[5\\]. It is a percentage. The KPI\n type is RATIO.",
+		"Formula": "Partial DRBAccessibility 5QI =\n (∑RRC.ConnEstabSucc.*Cause*/∑RRC.ConnEstabAtt.*Cause*) \\*\n (∑UECNTXT.ConnEstabSucc.*Cause*/∑ UECNTXT.ConnEstabAtt.*Cause*) \\*\n (DRB.EstabSucc.5QI/DRB.EstabAtt.5QI) \\* 100\n Partial DRB Accessibility SNSSAI =\n (∑RRC.ConnEstabSucc.*Cause*/∑RRC.ConnEstabAtt.*Cause*) \\*\n (∑UECNTXT.ConnEstabSucc.*Cause*/∑ UECNTXT.ConnEstabAtt.*Cause*) \\*\n (DRB.EstabSucc.SNSSAI/DRB.EstabAtt.SNSSAI) \\* 100.\n The sum over causes shall exclude the establishment cause mo-Signalling\n \\[5\\].\n For KPI on SubNetwork level the measurement shall be the averaged over\n all NRCellCUs in the SubNetwork",
+		"KPI Object": "SubNetwork, NRCellCU",
+		"Section": "Accessibility KPI (6.2) >> PDU session Establishment success rate of one network slice (S-NSSAI) (6.2.5)",
+		"Title": "PDU session Establishment success rate of one network slice (S-NSSAI) (6.2.5)"
+	},
+	{
+		"Name": "PDUSessionEstSR",
+		"Description": "This KPI describes the ratio of the number of successful PDU session\n establishment request to the number of PDU session establishment request\n attempts for all SMF which related to one network slice (S-NSSAI) and is\n used to evaluate accessibility provided by the end-to-end network slice\n and network performance. It is obtained by the number of successful PDU\n session requests divided by the number of attempted PDU session\n requests. It is a percentage. The KPI type is RATIO.",
+		"Formula": "![](./attachments/28552-i50/media/image6.png)![](./attachments/28552-i50/media/image6.png)",
+		"KPI Object": "NetworkSlice",
+		"Section": "Accessibility KPI (6.2) >> Maximum registered subscribers of network slice through AMF (6.2.6)",
+		"Title": "Maximum registered subscribers of network slice through AMF (6.2.6)"
+	},
+	{
+		"Name": "AMFMaxRegNbr",
+		"Description": "This KPI describe the maximum number of subscribers that are\n registered to a network slice. It is obtained by counting the\n subscribers in AMF that are registered to a network slice. It is an\n Integer. The KPI type is CUM.",
+		"Formula": "![](./attachments/28552-i50/media/image7.png)![](./attachments/28552-i50/media/image7.png)",
+		"KPI Object": "NetworkSlice",
+		"Section": "Accessibility KPI (6.2) >> Total DRB accessibility for UE services (6.2.7)",
+		"Title": "Total DRB accessibility for UE services (6.2.7)"
+	},
+	{
+		"Name": "Total DRB accessibility",
+		"Description": "This KPI describes the total DRBs accessibility obtained as the\n ratio of the number of successfully established DRBs and number of\n services intended to be setup by the end user that shall result into a\n DRB establishment via Initial Context setup procedure, Added DRB setup\n and RRC Resume procedure. The number of services intended to be setup by\n the end user that shall result into a DRB establishment via Initial\n Context setup procedure is obtained as number of attempted\n establishments of DRB via Initial Context setup procedure amplified by\n inverse of the UE-associated logical NG-connection success ratio further\n amplified by inverse of the RRC Connection setup state success ratio.\n The number of services intended to be setup by the end user that shall\n result into a DRB establishment via added DRB setup procedure is\n measured directly in gNB via number of attempted establishments of DRB\n via added DRB setup procedure. Finally the number of services intended\n to be setup by the end user that shall result into a DRB establishment\n via RRC Resume procedure is provided as number of attempted\n establishments of DRB via RRC Resume procedure amplified by inverse of\n the RRC Resume success ratio. The success rate for RRC connection setup\n and for UE-associated logical NG-connection setup shall exclude setups\n with establishment cause mo-Signalling \\[5\\]. The success rate for RRC\n resume shall exclude setups related to RNA update. It is a percentage.\n The KPI type is RATIO.",
+		"Formula": "DRBAccessibility 5QI = 100 * (*DRB.InitialEstabSucc.5QI +\n (DRB.EstabSucc.5QI-*DRB.InitialEstabSucc.*5QI) + DRB.ResumeSucc.5QI)/(\n DRB.InitialEstabAtt.5QI/((RRC connection setup success rate* /100)\\*(\n UE-associated logical NG-connection success ratio/100)) +\n *(*DRB.EstabAtt.5QI-DRB.InitialEstabAtt.*5QI) + DRB.ResumeAtt.5QI/( RRC\n Resume success rate/100))*\n DRBAccessibility SNSSAI = 100 \\* (DRB.InitialEstabSucc. SNSSAI +\n (DRB.EstabSucc. SNSSAI -DRB.InitialEstabSucc. SNSSAI) + DRB.ResumeSucc.\n SNSSAI)/( DRB.InitialEstabAtt. SNSSAI /((RRC connection setup success\n rate /100)\\*( UE-associated logical NG-connection success ratio /100)) +\n (DRB.EstabAtt. SNSSAI -DRB.InitialEstabAtt. SNSSAI) + DRB.ResumeAtt.\n SNSSAI /( RRC Resume success rate/100))\n Where:\n RRC Resume success rate = 100\\* ∑RRC.ResumeSucc.cause\n /∑(RRC.ResumeAtt.cause - RRC.ResumeFallbackToSetupAtt.cause), where all\n but the causes related to RNA update shall be included.\n RRC connection setup success rate = 100\\* (∑(RRC.ConnEstabSucc.Cause +\n RRC.ResumeSuccByFallback.cause) + RRC.ReEstabSuccWithoutUeContext)\n /(∑(RRC.ConnEstabAtt.Cause + RRC.ResumeFallbackToSetupAtt.cause) +\n RRC.ReEstabFallbackToSetupAtt)\n UE-associated logical NG-connection success ratio =\n 100\\*(∑UECNTXT.ConnEstabSucc.Cause/∑ UECNTXT.ConnEstabAtt.Cause)\n The sum over causes shall exclude the establishment cause mo-Signalling\n \\[5\\].\n The sum over causes for RRC resume shall exclude the causes related to\n RNA update \\[5\\].\n For KPI on SubNetwork level the measurement shall be the averaged over\n all NRCellCUs in the SubNetwork",
+		"KPI Object": "SubNetwork, NRCellCU",
+		"Section": "Accessibility KPI (6.2) >> Mean CM-Connected subscribers of network slice through AMF (6.2.8)",
+		"Title": "Mean CM-Connected subscribers of network slice through AMF (6.2.8)"
+	},
+	{
+		"Name": "AMFMeanCmConNbr",
+		"Description": "This KPI describe the mean number of subscribers in a period that\n are not only registered to a network slice but also established a PDU\n session related to the network slice. And subscribers also have a NAS\n signalling connection with the AMF over N1. It is obtained by counting\n the subscribers in AMF that are showed \"cm-connected\" state for a\n network slice. It is an Interger. The KPI type is CUM.\n c)  \n ![](./attachments/28552-i50/media/image8.png)",
+		"KPI Object": "NetworkSlice",
+		"Section": "Accessibility KPI (6.2) >> Maximum on-line subscribers of network slice through AMF (6.2.9)",
+		"Title": "Maximum on-line subscribers of network slice through AMF (6.2.9)"
+	},
+	{
+		"Name": "AMFMaxCmConNbr",
+		"Description": "This KPI describe the maximum number of subscribers in a period that\n are not only registered to a network slice but also established a PDU\n session related to a network slice. And subscribers also have a NAS\n signalling connection with the AMF over N1. It is obtained by counting\n the subscribers in AMF that are showed \"cm-connected\" state for a\n network slice. It is an Interger. The KPI type is CUM.\n c)  \n ![](./attachments/28552-i50/media/image9.png)",
+		"KPI Object": "NetworkSlice",
+		"Section": "Accessibility KPI (6.2) >> PFCP session established success rate of one network and one network slice (6.2.10)",
+		"Title": "PFCP session established success rate of one network and one network slice (6.2.10)"
+	},
+	{
+		"Name": "PFCPSessionEstSR",
+		"Description": "This KPI describes the successful rate of PFCP session established\n in a network or a network slice e on the UPF.\n > It is used to evaluate the quality of user-plane connection\n > established and the accessibility provided by the end-to-end network\n > slice and network performance. It is obtained by the number of\n > successful PFCP session requests divided by the number of attempted\n > PFCP session requests. It is a percentage. The KPI type is RATIO.",
+		"Formula": "> ![](./attachments/28552-i50/media/image10.png)",
+		"KPI Object": "Subnetwork, NetworkSlice",
+		"Section": "Accessibility KPI (6.2) >> Group-level N4 session establishment success rate of one 5G VN group (6.2.11)",
+		"Title": "Group-level N4 session establishment success rate of one 5G VN group (6.2.11)"
+	},
+	{
+		"Name": "GrouplevelN4SessionEstSR",
+		"Description": "This KPI describes the ratio of the number of successful group-level\n N4 session establishment request to the number of group-level N4 session\n establishment request attempts for all SMF related to one 5G VN group\n communication and is used to evaluate accessibility provided by the\n end-to-end network slice and network performance. It is obtained by the\n number of successful group-level N4 session requests divided by the\n number of attempted group-level N4 session requests. It is a percentage.\n The KPI type is RATIO.",
+		"Formula": "![](./attachments/28552-i50/media/image11.png)",
+		"KPI Object": "NetworkSlice",
+		"Section": "Accessibility KPI (6.2) >> PDU session Establishment success rate of one 5G VN Group (InternalgroupID) (6.2.12)",
+		"Title": "PDU session Establishment success rate of one 5G VN Group (InternalgroupID) (6.2.12)"
+	},
+	{
+		"Name": "PDUSessionEstSR",
+		"Description": "This KPI describes the ratio of the number of successful PDU session\n establishment request to the number of PDU session establishment request\n attempts for all SMF which related to one 5G VN Group (InternalgroupID)\n and is used to evaluate accessibility provided by the 5G VN Group and\n network performance. It is obtained by the number of successful PDU\n session requests divided by the number of attempted PDU session\n requests. It is a percentage. The KPI type is RATIO.",
+		"Formula": "![](./attachments/28552-i50/media/image6.png)\n > ![](./attachments/28552-i50/media/image12.png)![](./attachments/28552-i50/media/image12.png)\n > \\*100",
+		"KPI Object": "NetworkSlice",
+		"Section": "Accessibility KPI (6.2) >> Positive Paging Rate (6.2.13)",
+		"Title": "Positive Paging Rate (6.2.13)"
+	},
+	{
+		"Name": "AMFPositivePagingRate",
+		"Description": "The KPI describes the positive paging rate, i.e. the amount of\n paging requests that result in UEs transitioning from triggering a\n mobile terminated call (thus moving from Idle/Inactive to Connected\n Mode), w.r.t total number of paging requests. When Combined with\n ![](./attachments/28552-i50/media/image13.png)![](./attachments/28552-i50/media/image13.png),\n ![](./attachments/28552-i50/media/image14.png)![](./attachments/28552-i50/media/image14.png)and\n ![](./attachments/28552-i50/media/image15.png)![](./attachments/28552-i50/media/image15.png)\n (from all CUs, and their respective DUs, belonging to the same AMF),\n this ratio will be used to quantify the impact of false paging\n occasions, i.e. paging occasions that do not result in a UEs triggering\n mobile terminated calls, on network side paging resource utilisation as\n well as on UE’s power consumption : low rates will imply non optimal\n network resource utilisation and high UE wake up rate (wake up here is\n defined by Idle/Inactive to Connected mode transition) or equivalently\n higher UE power consumption. This KPI is a percentage. The KPI type is\n RATIO.",
+		"Formula": "Below is the equation for AMFPositivePagingRate:\n ![](./attachments/28552-i50/media/image16.png)\n Measurement names:\n ![](./attachments/28552-i50/media/image17.png)![](./attachments/28552-i50/media/image17.png)",
+		"KPI Object": "AMF",
+		"Section": "Integrity KPI (6.3) >> Latency and delay of 5G networks (6.3.1) >> Downlink latency in gNB-DU (6.3.1.1)",
+		"Title": "Downlink latency in gNB-DU (6.3.1.1)"
+	},
+	{
+		"Name": "DLLat_gNB-DU",
+		"Description": "This KPI describes the gNB-DU part of the packet transmission\n latency experienced by an end-user. It is used to evaluate the gNB\n latency contribution to the total packet latency. It is the average\n (arithmetic mean) of the time from reception of IP packet to gNB-DU\n until transmission of first part of that packet over the air interface,\n for a packet arriving when there is no previous data in queue for\n transmission to the UE. It is a time interval (0.1 mS). The KPI type is\n MEAN. This KPI can optionally be split into KPIs per QoS level (mapped\n 5QI or QCI in NR option 3) and per S-NSSAI.",
+		"Formula": "DLLat_gNB-DU = DRB.RlcSduLatencyDl\n or optionally DLLat\\_gNB-DU.*QoS* = DRB.RlcSduLatencyDl.QoS where QOS\n identifies the target QoS quality of service class.\n or optionally DLLat\\_gNB-DU.*SNSSAI* = DRB.RlcSduLatencyDl.*SNSSAI*\n where *SNSSAI* identifies the S-NSSAI.",
+		"KPI Object": "NRCellDU",
+		"Section": "Integrity KPI (6.3) >> Latency and delay of 5G networks (6.3.1) >> Integrated downlink delay in RAN (6.3.1.2) >> Downlink delay in NG-RAN for a sub-network (6.3.1.2.1)",
+		"Title": "Downlink delay in NG-RAN for a sub-network (6.3.1.2.1)"
+	},
+	{
+		"Name": "DLDelay_NR_SNw",
+		"Description": "This KPI describes the average packet transmission delay through the\n RAN part to the UE. It is used to evaluate delay performance of NG-RAN\n in downlink for a sub-network. It is the weighted average packets delay\n from reception of IP packet in gNB-CU-UP until the last part of an RLC\n SDU packet was received by the UE according to received HARQ feedback\n information for UM mode or until the last part of an RLC SDU packet was\n received by the UE according to received RLC ACK for AM mode. It is a\n time interval (0.1 ms). The KPI type is MEAN. This KPI can optionally be\n split into KPIs per QoS level (mapped 5QI or QCI in NR option 3) and per\n S-NSSAI.",
+		"Formula": "Below are the equations for average “Integrated downlink delay in\n RAN” for this KPI on SubNetwork level. The “Integrated downlink delay in\n RAN” is the sum of average DL delay in gNB-CU-UP of the sub-network\n (DLDelay\\_gNBCUUP\\_SNw) and the average DL delay in gNB-DU of the\n sub-network (DLDelay\\_gNBDU\\_SNw):\n DLDelay\\_NR\\_SNw = DLDelay\\_gNBCUUP\\_SNw + DLDelay\\_gNBDU\\_SNw\n or optionally DLDelay\\_ NR\\_SNw.*QOS* = DLDelay\\_gNBCUUP\\_SNw.*QOS* +\n DLDelay\\_gNBDU\\_SNw.*QOS* where *QOS* identifies the target quality of\n service class.\n > or optionally DLDelay\\_NR\\_SNw.*SNSSAI* =\n > DLDelay\\_gNBCUUP\\_SNw.*SNSSAI* + DLDelay\\_gNBDU\\_SNw.*SNSSAI* where\n > *SNSSAI* identifies the S-NSSAI.",
+		"KPI Object": "SubNetwork\n NOTE: If the HARQ process is configured with disabled HARQ feedback for\n NTN (refer to 38.321\\[15\\]), this KPI is not available for UM mode.",
+		"Section": "Integrity KPI (6.3) >> Latency and delay of 5G networks (6.3.1) >> Integrated downlink delay in RAN (6.3.1.2) >> Downlink delay in NG-RAN for a network slice subnet (6.3.1.2.2)",
+		"Title": "Downlink delay in NG-RAN for a network slice subnet (6.3.1.2.2)"
+	},
+	{
+		"Name": "DLDelay_NR_Nss",
+		"Description": "This KPI describes the average packet transmission delay through the\n RAN part to the UE. It is used to evaluate delay performance of NG-RAN\n in downlink for a network slice subnet. It is the weighted average\n packets delay from reception of IP packet in gNB-CU-UP until the last\n part of an RLC SDU packet was received by the UE according to received\n HARQ feedback information for UM mode or until the last part of an RLC\n SDU packet was received by the UE according to received RLC ACK for AM\n mode. It is a time interval (0.1 ms). The KPI type is MEAN.",
+		"Formula": "Below is the equation for average \"Integrated downlink delay in RAN\"\n for this KPI on NetworkSliceSubnet level. The \"Integrated downlink delay\n in RAN\" for network slice subnet is the sum of average DL delay in\n gNB-CU-UP of the network slice subnet (DLDelay\\_gNBCUUP\\_Nss) and the\n average DL delay in gNB-DU of the network slice subnet\n (DLDelay\\_gNBDU\\_Nss):\n DLDelay\\_NR\\_Nss.*SNSSAI* = DLDelay\\_gNBCUUP\\_Nss.*SNSSAI* +\n DLDelay\\_gNBDU\\_Nss.*SNSSAI* where *SNSSAI* identifies the S-NSSAI that\n the network slice subnet supports.",
+		"KPI Object": "NetworkSliceSubnet\n NOTE: If the HARQ process is configured with disabled HARQ feedback for\n NTN (refer to 38.321\\[15\\]), this KPI is not available for UM mode.",
+		"Section": "Integrity KPI (6.3) >> Latency and delay of 5G networks (6.3.1) >> Downlink delay in gNB-DU (6.3.1.3) >> Downlink delay in gNB-DU for a NRCellDU (6.3.1.3.1)",
+		"Title": "Downlink delay in gNB-DU for a NRCellDU (6.3.1.3.1)"
+	},
+	{
+		"Name": "DLDelay_gNBDU_Cell",
+		"Description": "This KPI describes the average packet transmission delay through the\n gNB-DU part to the UE. It is used to evaluate delay performance of\n gNB-DU in downlink. It is the average packets delay time from arrival of\n an RLC SDU at the RLC ingress F1-U termination until the last part of an\n RLC SDU packet was received by the UE according to received HARQ\n feedback information for UM mode or until the last part of an RLC SDU\n packet was received by the UE according to received RLC ACK for AM mode.\n It is a Time interval (0.1 ms). The KPI type is MEAN. This KPI can\n optionally be split into KPIs per QoS level (mapped 5QI or QCI in NR\n option 3) and per S-NSSAI.",
+		"Formula": "Below is the equation for average DL delay in gNB-DU for a NRCellDU:\n DLDelay\\_gNBDU\\_Cell = DRB.RlcSduDelayDl + DRB.AirIfDelayDl.\n and optionally: DLDelay\\_gNBDU.*QOS* = DRB.RlcSduDelayDl.*QOS* +\n DRB.AirIfDelayDl.*QOS* where *QOS* identifies the target quality of\n service class.\n > and optionally: DLDelay\\_gNB.*SNSSAI* = DRB.RlcSduDelayDl.*SNSSAI* +\n > DRB.AirIfDelayDl.*SNSSAI* where *SNSSAI* identifies the S-NSSAI",
+		"KPI Object": "NRCellDU\n NOTE: If the HARQ process is configured with disabled HARQ feedback for\n NTN (refer to 38.321\\[15\\]), this KPI is not available for UM mode.",
+		"Section": "Integrity KPI (6.3) >> Latency and delay of 5G networks (6.3.1) >> Downlink delay in gNB-DU (6.3.1.3) >> Downlink delay in gNB-DU for a sub-network (6.3.1.3.2)",
+		"Title": "Downlink delay in gNB-DU for a sub-network (6.3.1.3.2)"
+	},
+	{
+		"Name": "DLDelay_gNBDU_SNw",
+		"Description": "This KPI describes the average packet transmission delay through the\n gNB-DU part to the UE. It is used to evaluate delay performance of\n gNB-DU in downlink for a sub-network. It is the weighted average packets\n delay time from arrival of an RLC SDU at the RLC ingress F1-U\n termination until the last part of an RLC SDU packet was received by the\n UE according to received HARQ feedback information for UM mode or until\n the last part of an RLC SDU packet was received by the UE according to\n received RLC ACK for AM mode. It is a Time interval (0.1 ms). The KPI\n type is MEAN. This KPI can optionally be split into KPIs per QoS level\n (mapped 5QI or QCI in NR option 3) and per S-NSSAI.",
+		"Formula": "Below is the equation for average DL delay in gNB-DU for a\n sub-network, where\n \\- W is the measurement for the weighted average, one of the following:\n > \\- the DL data volume of the NR cell;\n >\n > \\- the number of UL user data packets of the NR cell;\n >\n > \\- any other types of weight defined by the consumer of KPI\n \\- the \\#NRCellDU is the number of NRCellDU’s in the SubNetwork.\n > ![](./attachments/28552-i50/media/image18.png)![](./attachments/28552-i50/media/image18.png)\n > ![](./attachments/28552-i50/media/image19.png)![](./attachments/28552-i50/media/image19.png)\n >\n > *and optionally KPI on SubNetwork level per QoS and per S-NSSAI:*\n >\n > ![](./attachments/28552-i50/media/image20.png)![](./attachments/28552-i50/media/image20.png)\n > ![](./attachments/28552-i50/media/image21.png)![](./attachments/28552-i50/media/image21.png)\n >\n > ![](./attachments/28552-i50/media/image22.png)![](./attachments/28552-i50/media/image22.png)\n > ![](./attachments/28552-i50/media/image23.png)![](./attachments/28552-i50/media/image23.png)",
+		"KPI Object": "SubNetwork\n NOTE: If the HARQ process is configured with disabled HARQ feedback for\n NTN (refer to 38.321\\[15\\]), this KPI is not available for UM mode.",
+		"Section": "Integrity KPI (6.3) >> Latency and delay of 5G networks (6.3.1) >> Downlink delay in gNB-DU (6.3.1.3) >> Downlink delay in gNB-DU for a network slice subnet (6.3.1.3.3)",
+		"Title": "Downlink delay in gNB-DU for a network slice subnet (6.3.1.3.3)"
+	},
+	{
+		"Name": "DLDelay_gNBDU_Nss",
+		"Description": "This KPI describes the average packet transmission delay through the\n gNB-DU part to the UE. It is used to evaluate delay performance of\n gNB-DU in downlink for a network slice subnet. It is the weighted\n average packets delay time from arrival of an RLC SDU at the RLC ingress\n F1-U termination until the last part of an RLC SDU packet was received\n by the UE according to received HARQ feedback information for UM mode or\n until the last part of an RLC SDU packet was received by the UE\n according to received RLC ACK for AM mode. It is a Time interval (0.1",
+		"undefined": ". The KPI type is MEAN",
+		"Formula": "Below is the equation for average DL delay in gNB-DU for a network\n slice subnet, where\n \\- W is the measurement for the weighted average, one of the following:\n \\- the DL data volume of the NR cell;\n \\- the number of DL user data packets of the NR cell;\n \\- any other types of weight requested by the consumer of KPI;\n \\- the \\#NRCellDU is the number of NRCellDU’s associated with the\n NetworkSliceSubnet.\n > ![](./attachments/28552-i50/media/image24.png)![](./attachments/28552-i50/media/image24.png)\n > ![](./attachments/28552-i50/media/image23.png)![](./attachments/28552-i50/media/image23.png)",
+		"KPI Object": "NetworkSliceSubnet\n NOTE: If the HARQ process is configured with disabled HARQ feedback for\n NTN (refer to 38.321\\[15\\]), this KPI is not available for UM mode.",
+		"Section": "Integrity KPI (6.3) >> Latency and delay of 5G networks (6.3.1) >> Downlink delay in gNB-CU-UP (6.3.1.4) >> Downlink delay in gNB-CU-UP (6.3.1.4.1)",
+		"Title": "Downlink delay in gNB-CU-UP (6.3.1.4.1)"
+	},
+	{
+		"Name": "DLDelay_gNBCUUP",
+		"Description": "This KPI describes the average packet transmission delay through the\n gNB-CU-UP to the gNB-DU. It is used to evaluate the delay performance of\n gNB-CU-UP in downlink. It is the average packets delay from reception of\n IP packet in gNB-CU-UP until the time of arrival, at the gNB-DU, of the\n RLC SDU at the RLC ingress F1-U termination. It is a Time interval (0.1",
+		"undefined": ". The KPI type is MEAN. This KPI can optionally be split into KPIs",
+		"Formula": "Below the equation for average DL delay in a gNB-CU-CP:\n > DLDelay\\_gNBCUUP = DRB. PdcpSduDelayDl + DRB.PdcpF1Delay\n and optionally: DLDelay\\_ gNBCUUP.*QOS* = DRB.PdcpSduDelayDl.*QOS* +\n DRB.PdcpF1Delay.*QOS* where *QOS* identifies the target quality of\n service class.\n > and optionally: DLDelay\\_gNBCUUP.*SNSSAI* =\n > DRB.PdcpSduDelayDl.*SNSSAI* + DRB.PdcpF1Delay.*SNSSAI* where *SNSSAI*\n > identifies the S-NSSAI.",
+		"KPI Object": "GNBCUUPFunction",
+		"Remark": "In non-split gNB scenario, the value of DRB.PdcpF1Delay (optionally\n DRB.PdcpF1Delay.*QOS,* and optionally *DRB.PdcpF*1Delay.*SNSSAI)* is set\n to zero because there are no F1-interfaces in this scenario.",
+		"Section": "Integrity KPI (6.3) >> Latency and delay of 5G networks (6.3.1) >> Downlink delay in gNB-CU-UP (6.3.1.4) >> Downlink delay in gNB-CU-UP for a sub-network (6.3.1.4.2)",
+		"Title": "Downlink delay in gNB-CU-UP for a sub-network (6.3.1.4.2)"
+	},
+	{
+		"Name": "DLDelay_gNBCUUP_SNw",
+		"Description": "This KPI describes the average packet transmission delay through the\n gNB-CU-UP to the gNB-DU. It is used to evaluate the delay performance of\n gNB-CU-UP in downlink for a sub-network. It is the weighted average\n packets delay from reception of IP packet in gNB-CU-UP until the time of\n arrival, at the gNB-DU, of the RLC SDU at the RLC ingress F1-U\n termination. It is a Time interval (0.1 ms). The KPI type is MEAN. This\n KPI can optionally be split into KPIs per QoS level (mapped 5QI or QCI\n in NR option 3) and per S-NSSAI.",
+		"Formula": "Below is the equation for average UL delay in gNB-CU-UP for a\n sub-network, where\n \\- W is the measurement for the weighted average, one of the following:\n \\- the DL data volume in gNB-CU-UP;\n \\- the number of DL user data packets in gNB-CU-UP;\n \\- any other types of weight requested by the consumer of KPI;\n \\- the \\# GNBCUUPFunctions is the number of GNBCUUPFunctions’s in the\n SubNetwork.\n > ![](./attachments/28552-i50/media/image25.png)![](./attachments/28552-i50/media/image25.png)\n > ![](./attachments/28552-i50/media/image26.png)![](./attachments/28552-i50/media/image26.png)\n >\n > *and optionally KPI on SubNetwork level per QoS and per S-NSSAI:*\n >\n > ![](./attachments/28552-i50/media/image27.png)![](./attachments/28552-i50/media/image27.png)\n > ![](./attachments/28552-i50/media/image28.png)![](./attachments/28552-i50/media/image28.png)\n >\n > ![](./attachments/28552-i50/media/image29.png)![](./attachments/28552-i50/media/image29.png)\n > ![](./attachments/28552-i50/media/image30.png)![](./attachments/28552-i50/media/image30.png)",
+		"KPI Object": "SubNetwork",
+		"Remark": "In non-split gNB scenario, the value of DRB.PdcpF1Delay (optionally\n DRB.PdcpF1Delay.*QOS,* and optionally DRB.PdcpF1Delay.*SNSSAI)* is set\n to zero because there are no F1-interfaces in this scenario.",
+		"Section": "Integrity KPI (6.3) >> Latency and delay of 5G networks (6.3.1) >> Downlink delay in gNB-CU-UP (6.3.1.4) >> Downlink delay in gNB-CU-UP for a network slice subnet (6.3.1.4.3)",
+		"Title": "Downlink delay in gNB-CU-UP for a network slice subnet (6.3.1.4.3)"
+	},
+	{
+		"Name": "DLDelay_gNBCUUP_Nss",
+		"Description": "This KPI describes the average packet transmission delay through the\n gNB-CU-UP to gNB-DU. It is used to evaluate the delay performance of\n gNB-CU-UP in downlink for a network slice subnet. It is the weighted\n average packets delay from reception of IP packet in gNB-CU-UP until the\n time of arrival, at the gNB-DU, of the RLC SDU at the RLC ingress F1-U\n termination. It is a Time interval (0.1 ms). The KPI type is MEAN.",
+		"Formula": "Below is the equation for average UL delay in gNB-CU-UP for a\n network slice subnet, where\n \\- W is the measurement for the weighted average, one of the following:\n \\- the DL data volume in gNB-CU-UP;\n \\- the number of DL user data packets in gNB-CU-UP;\n \\- any other types of weight requested by the consumer of KPI;\n \\- the \\# GNBCUUPFunctions is the number of GNBCUUPFunctions’s\n associated with the NetworkSliceSubnet.\n > ![](./attachments/28552-i50/media/image31.png)![](./attachments/28552-i50/media/image31.png)\n > ![](./attachments/28552-i50/media/image30.png)![](./attachments/28552-i50/media/image30.png)",
+		"KPI Object": "NetworkSliceSubnet",
+		"Remark": "In non-split gNB scenario, the value of DRB.PdcpF1Delay.*SNSSAI* is\n set to zero because there are no F1-interfaces in this scenario.",
+		"Section": "Integrity KPI (6.3) >> Latency and delay of 5G networks (6.3.1) >> Uplink delay in gNB-DU (6.3.1.5) >> Uplink delay in gNB-DU for a NR cell (6.3.1.5.1)",
+		"Title": "Uplink delay in gNB-DU for a NR cell (6.3.1.5.1)"
+	},
+	{
+		"Name": "ULDelay_gNBDU_Cell",
+		"Description": "This KPI describes the average packet transmission delay through the\n gNB-DU part from the UE in a NR cell. It is used to evaluate delay\n performance of gNB-DU in uplink. It is the average packet delay from\n when an UL RLC SDU was scheduled, as per the scheduling grant provided,\n until time when the RLC SDU is sent to PDCP or CU for split gNB. It is a\n time interval (0.1 ms). The KPI type is MEAN. This KPI can optionally be\n split into KPIs per QoS level (mapped 5QI or QCI in NR option 3) and per\n S-NSSAI.",
+		"Formula": "Below is the equation for average UL delay in gNB-DU for a NRCellDU:\n > ULDelay\\_gNBDU\\_Cell = DRB.RlcDelayUI + DRB.AirIfDelayUI\n >\n > and optionally:\n > ![](./attachments/28552-i50/media/image32.png)![](./attachments/28552-i50/media/image32.png)\n > where *QOS* identifies the target quality of service class.\n >\n > and optionally:\n > ![](./attachments/28552-i50/media/image33.png)![](./attachments/28552-i50/media/image33.png)\n > where *SNSSAI* identifies the S-NSSAI.",
+		"KPI Object": "NRCellDU",
+		"Section": "Integrity KPI (6.3) >> Latency and delay of 5G networks (6.3.1) >> Uplink delay in gNB-DU (6.3.1.5) >> Uplink delay in gNB-DU for a sub-network (6.3.1.5.2)",
+		"Title": "Uplink delay in gNB-DU for a sub-network (6.3.1.5.2)"
+	},
+	{
+		"Name": "ULDelay_gNBDU_SNw",
+		"Description": "This KPI describes the average packet transmission delay through the\n gNB-DU part from the UE for a sub-network. It is used to evaluate delay\n performance of gNB-DU in uplink for a sub-network. It is the weighted\n average packet delay from when an UL RLC SDU was scheduled, as per the\n scheduling grant provided, until time when the RLC SDU is sent to PDCP\n or CU for split gNB. It is a time interval (0.1 ms). The KPI type is\n MEAN. This KPI can optionally be split into KPIs per QoS level (mapped\n 5QI or QCI in NR option 3) and per S-NSSAI.",
+		"Formula": "Below is the equation for average UL delay in gNB-DU for a\n sub-network, where\n \\- W is the measurement for the weighted average, one of the following:\n \\- the UL data volume of the NR cell;\n \\- the number of UL user data packets of the NR cell;\n \\- any other types of weight defined by the consumer of KPI\n \\- the \\#NRCellDU is the number of NRCellDU’s in the SubNetwork.\n > ![](./attachments/28552-i50/media/image34.png)![](./attachments/28552-i50/media/image34.png)\n > ![](./attachments/28552-i50/media/image35.png)![](./attachments/28552-i50/media/image35.png)\n >\n > *and optionally KPI on SubNetwork level per QoS and per S-NSSAI:*\n >\n > ![](./attachments/28552-i50/media/image36.png)![](./attachments/28552-i50/media/image36.png)\n > ![](./attachments/28552-i50/media/image37.png)![](./attachments/28552-i50/media/image37.png)\n >\n > ![](./attachments/28552-i50/media/image38.png)![](./attachments/28552-i50/media/image38.png)\n > ![](./attachments/28552-i50/media/image39.png)![](./attachments/28552-i50/media/image39.png)",
+		"KPI Object": "SubNetwork",
+		"Section": "Integrity KPI (6.3) >> Latency and delay of 5G networks (6.3.1) >> Uplink delay in gNB-DU (6.3.1.5) >> Uplink delay in gNB-DU for a network slice subnet (6.3.1.5.3)",
+		"Title": "Uplink delay in gNB-DU for a network slice subnet (6.3.1.5.3)"
+	},
+	{
+		"Name": "ULDelay_gNBDU_Nss",
+		"Description": "This KPI describes the average packet transmission delay through the\n gNB-DU part from the UE for a network slice subnet. It is used to\n evaluate delay performance of gNB-DU in uplink for a network slice\n subnet. It is the weighted average packet delay from when an UL RLC SDU\n was scheduled, as per the scheduling grant provided, until time when the\n RLC SDU is sent to PDCP or CU for split gNB. It is a time interval (0.1",
+		"undefined": ". The KPI type is MEAN",
+		"Formula": "Below is the equation for average UL delay in gNB-DU for a network\n slice subnet, where\n \\- W is the measurement for the weighted average, one of the following:\n \\- the UL data volume of the NR cell;\n \\- the number of UL user data packets of the NR cell;\n \\- any other types of weight requested by the consumer of KPI;\n \\- the \\#NRCellDU is the number of NRCellDU’s associated with the\n NetworkSliceSubnet.\n > ![](./attachments/28552-i50/media/image40.png)![](./attachments/28552-i50/media/image40.png)\n > ![](./attachments/28552-i50/media/image39.png)![](./attachments/28552-i50/media/image39.png)",
+		"KPI Object": "NetworkSliceSubnet",
+		"Section": "Integrity KPI (6.3) >> Latency and delay of 5G networks (6.3.1) >> Uplink delay in gNB-CU-UP (6.3.1.6) >> Uplink delay in gNB-CU-UP (6.3.1.6.1)",
+		"Title": "Uplink delay in gNB-CU-UP (6.3.1.6.1)"
+	},
+	{
+		"Name": "ULDelay_gNBCUUP",
+		"Description": "This KPI describes the average packet transmission delay through the\n gNB-CU-UP from gNB-DU. It is used to evaluate delay performance of\n gNB-CU-UP in uplink. It is the average packet delay from when the RLC\n SDU is sent to PDCP or CU for split gNB, until time when the\n corresponding PDCP SDU was sent to the core network from gNB-CU-UP. It\n is a time interval (0.1 ms). The KPI type is MEAN. This KPI can\n optionally be split into KPIs per QoS level (mapped 5QI or QCI in NR\n option 3) and per S-NSSAI.",
+		"Formula": "Below the equation for average UL delay in a gNB-CU-CP:\n > ![](./attachments/28552-i50/media/image41.png)\n >\n > and optionally:\n > ![](./attachments/28552-i50/media/image42.png)![](./attachments/28552-i50/media/image42.png)\n > where *QOS* identifies the target quality of service class.\n and optionally:\n ![](./attachments/28552-i50/media/image43.png)![](./attachments/28552-i50/media/image43.png)\n where *SNSSAI* identifies the S-NSSAI.",
+		"KPI Object": "GNBCUUPFunction",
+		"Remark": "It is assumed that the F1 uplink delay is the same as the F1\n downlink delay. In non-split gNB scenario, the value of DRB.PdcpF1Delay\n (optionally DRB.PdcpF1Delay.*QOS,* and optionally\n *DRB.PdcpF*1Delay.*SNSSAI)* is set to zero because there are no\n F1-interfaces in this scenario.",
+		"Section": "Integrity KPI (6.3) >> Latency and delay of 5G networks (6.3.1) >> Uplink delay in gNB-CU-UP (6.3.1.6) >> Uplink delay in gNB-CU-UP for a sub-network (6.3.1.6.2)",
+		"Title": "Uplink delay in gNB-CU-UP for a sub-network (6.3.1.6.2)"
+	},
+	{
+		"Name": "ULDelay_gNBCUUP_SNw",
+		"Description": "This KPI describes the average packet transmission delay through the\n gNB-CU-UP part from the gNB-DU for a sub-network. It is used to evaluate\n delay performance of gNB-CU-UP in uplink for a sub-network. It is the\n weighted average packet delay from when the RLC SDU is sent to PDCP or\n CU for split gNB, until time when the corresponding PDCP SDU was sent to\n the core network from gNB-CU-UP. It is a time interval (0.1 ms). The KPI\n type is MEAN. This KPI can optionally be split into KPIs per QoS level\n (mapped 5QI or QCI in NR option 3) and per S-NSSAI.",
+		"Formula": "Below is the equation for average UL delay in gNB-CU-UP for a\n sub-network, where\n \\- W is the measurement for the weighted average, one of the following:\n \\- the UL data volume in gNB-CU-UP ;\n \\- the number of UL user data packets in gNB-CU-UP ;\n \\- any other types of weight requested by the consumer of KPI;\n \\- the \\# GNBCUUPFunctions is the number of GNBCUUPFunctions’s in the\n SubNetwork.\n > ![](./attachments/28552-i50/media/image44.png)![](./attachments/28552-i50/media/image44.png)\n > ![](./attachments/28552-i50/media/image45.png)![](./attachments/28552-i50/media/image45.png)\n >\n > *and optionally KPI on SubNetwork level per QoS and per S-NSSAI:*\n >\n > ![](./attachments/28552-i50/media/image46.png)![](./attachments/28552-i50/media/image46.png)\n > ![](./attachments/28552-i50/media/image47.png)![](./attachments/28552-i50/media/image47.png)\n >\n > ![](./attachments/28552-i50/media/image48.png)![](./attachments/28552-i50/media/image48.png)\n > ![](./attachments/28552-i50/media/image49.png)![](./attachments/28552-i50/media/image49.png)",
+		"KPI Object": "SubNetwork",
+		"Remark": "It is assumed that the F1 uplink delay is the same as the F1\n downlink delay. In non-split gNB scenario, the value of DRB.PdcpF1Delay\n (optionally DRB.PdcpF1Delay.*QOS,* and optionally\n DRB.PdcpF1Delay.*SNSSAI)* is set to zero because there are no\n F1-interfaces in this scenario.",
+		"Section": "Integrity KPI (6.3) >> Latency and delay of 5G networks (6.3.1) >> Uplink delay in gNB-CU-UP (6.3.1.6) >> Uplink delay in gNB-CU-UP for a network slice subnet (6.3.1.6.3)",
+		"Title": "Uplink delay in gNB-CU-UP for a network slice subnet (6.3.1.6.3)"
+	},
+	{
+		"Name": "ULDelay_gNBCUUP_Nss",
+		"Description": "This KPI describes the average packet transmission delay through the\n gNB-CU-UP part from the gNB-DU for a network slice subnet. It is used to\n evaluate delay performance of gNB-CU-UP in uplink for a network slice\n subnet. It is the weighted average packet delay from when the RLC SDU is\n sent to PDCP or CU for split gNB, until time when the corresponding PDCP\n SDU was sent to the core network from gNB-CU-UP. It is a time interval\n (0.1 ms). The KPI type is MEAN. This KPI can optionally be split into\n KPIs per QoS level (mapped 5QI or QCI in NR option 3) and per S-NSSAI.",
+		"Formula": "Below is the equation for average UL delay in gNB-CU-UP for a\n network slice subnet, where\n \\- W is the measurement for the weighted average, one of the following:\n \\- the UL data volume in gNB-CU-UP;\n \\- the number of UL user data packets in gNB-CU-UP;\n \\- any other types of weight requested by the consumer of KPI;\n \\- the \\# GNBCUUPFunctions is the number of GNBCUUPFunctions’s\n associated with the NetworkSliceSubnet.\n > ![](./attachments/28552-i50/media/image50.png)![](./attachments/28552-i50/media/image50.png)\n > ![](./attachments/28552-i50/media/image49.png)![](./attachments/28552-i50/media/image49.png)",
+		"KPI Object": "NetworkSliceSubnet",
+		"Remark": "It is assumed that the F1 uplink delay is the same as the F1\n downlink delay. In non-split gNB scenario, the value of\n DRB.PdcpF1Delay.*SNSSAI* is set to zero because there are no\n F1-interfaces in this scenario.",
+		"Section": "Integrity KPI (6.3) >> Latency and delay of 5G networks (6.3.1) >> Integrated uplink delay in RAN (6.3.1.7) >> Uplink delay in NG-RAN for a sub-network (6.3.1.7.1)",
+		"Title": "Uplink delay in NG-RAN for a sub-network (6.3.1.7.1)"
+	},
+	{
+		"Name": "ULDelay_NR_SNw",
+		"Description": "This KPI describes the average packet transmission delay through the\n RAN part from the UE for a sub-network. It is used to evaluate delay\n performance of NG-RAN in uplink. It is the weighted average packet delay\n from when an UL RLC SDU was scheduled, as per the scheduling grant\n provided, until time when the corresponding PDCP SDU was sent to the\n core network from gNB-CU-UP. It is a time interval (0.1 ms). The KPI\n type is MEAN. This KPI can optionally be split into KPIs per QoS level\n (mapped 5QI or QCI in NR option 3) and per S-NSSAI.",
+		"Formula": "Below are the equations for average \"Integrated uplink delay in RAN\"\n for this KPI on SubNetwork level. The \"Integrated uplink delay in RAN\"\n is the sum of average UL delay in gNB-CU-UP of the sub-network\n (ULDelay\\_gNBCUUP\\_SNw) and the average UL delay in gNB-DU of the\n sub-network (ULDelay\\_gNBDU\\_SNw):\n ULDelay\\_NR\\_SNw = ULDelay\\_gNBCUUP\\_SNw + ULDelay\\_gNBDU\\_SNw\n or optionally ULDelay\\_ NR\\_SNw.*QOS* = ULDelay\\_gNBCUUP\\_SNw.*QOS* +\n ULDelay\\_gNBDU\\_SNw.*QOS* where *QOS* identifies the target quality of\n service class.\n > or optionally ULDelay\\_NR\\_SNw.*SNSSAI* =\n > ULDelay\\_gNBCUUP\\_SNw.*SNSSAI* + ULDelay\\_gNBDU\\_SNw.*SNSSAI* where\n > *SNSSAI* identifies the S-NSSAI.",
+		"KPI Object": "SubNetwork",
+		"Section": "Integrity KPI (6.3) >> Latency and delay of 5G networks (6.3.1) >> Integrated uplink delay in RAN (6.3.1.7) >> Uplink delay in NG-RAN for a network slice subnet (6.3.1.7.2)",
+		"Title": "Uplink delay in NG-RAN for a network slice subnet (6.3.1.7.2)"
+	},
+	{
+		"Name": "ULDelay_NR_Nss",
+		"Description": "This KPI describes the average packet transmission delay through the\n RAN part from the UE for a network slice subnet. It is used to evaluate\n delay performance of NG-RAN in uplink. It is the weighted average packet\n delay from when an UL RLC SDU was scheduled, as per the scheduling grant\n provided, until time when the corresponding PDCP SDU was sent to the\n core network from gNB-CU-UP. It is a time interval (0.1 ms). The KPI\n type is MEAN. This KPI can optionally be split into KPIs per QoS level\n (mapped 5QI or QCI in NR option 3) and per S-NSSAI.",
+		"Formula": "Below is the equation for average “Integrated uplink delay in RAN”\n for this KPI on NetworkSliceSubNet level. The “Integrated uplink delay\n in RAN” for network slice subnet is the sum of average UL delay in\n gNB-CU-UP of the network slice subnet (ULDelay\\_gNBCUUP\\_Nss) and the\n average UL delay in gNB-DU of the network slice subnet\n (ULDelay\\_gNBDU\\_Nss):\n ULDelay\\_NR\\_Nss.*SNSSAI* = ULDelay\\_gNBCUUP\\_Nss.*SNSSAI* +\n ULDelay\\_gNBDU\\_Nss.*SNSSAI* where *SNSSAI* identifies the S-NSSAI that\n the network slice subnet supports.",
+		"KPI Object": "NetworkSliceSubnet",
+		"Section": "Integrity KPI (6.3) >> Latency and delay of 5G networks (6.3.1) >> E2E delay for network slice (6.3.1.8) >> Average e2e uplink delay for a network slice (6.3.1.8.1)",
+		"Title": "Average e2e uplink delay for a network slice (6.3.1.8.1)"
+	},
+	{
+		"Name": "DelayE2EUlNs",
+		"Description": "This KPI describes the average e2e UL packet delay between the PSA\n UPF and the UE for a network slice. It is the weighted average packet\n delay from the time when an UL RLC SDU was scheduled at the UE until the\n time when the corresponding GTP PDU was received by the PSA UPF. The KPI\n type is MEAN in unit of 0.1 ms.",
+		"Formula": "This KPI is the weighted average of UL packet delay between PSA UPF\n and UE, for all N3 interfaces (modelled by EP\\_N3 MOIs) and N9\n interfaces (modelled by EP\\_N9 MOIs) of all PSA UPFs supporting the\n network slice (modelled by NetworkSlice MOI) identified by the S-NSSAI.\n > This KPI is calculated in the equation below, where Wn3 and Wn9 are\n > the measurements for the weighted average, Wn3 is one of the\n > following:\n \\- the data volume of UL GTP PDUs received by PSA UPF on the N3\n interface;\n \\- the number of UL GTP PDUs received by PSA UPF on the N3 interface;\n \\- any other types of weight defined by the consumer of KPI.\n > And Wn9 is one of the following:\n \\- the data volume of UL GTP PDUs received by PSA UPF on the N9\n interface;\n \\- the number of UL GTP PDUs received by PSA UPF on the N9 interface;\n \\- any other types of weight defined by the consumer of KPI.\n > DelayE2EUlNs =\n > ![](./attachments/28552-i50/media/image51.png)![](./attachments/28552-i50/media/image51.png)\n >\n > Where the *SNSSAI* identifies the S-NSSAI.",
+		"KPI Object": "NetworkSlice",
+		"Section": "Integrity KPI (6.3) >> Latency and delay of 5G networks (6.3.1) >> E2E delay for network slice (6.3.1.8) >> Average e2e downlink delay for a network slice (6.3.1.8.2)",
+		"Title": "Average e2e downlink delay for a network slice (6.3.1.8.2)"
+	},
+	{
+		"Name": "DelayE2EDlNs",
+		"Description": "This KPI describes the average e2e DL packet delay between the PSA\n UPF and the UE for a network slice. It is the weighted average packet\n delay from the time when an GTP PDU has been sent by the PSA UPF until\n time when the corresponding RLC SDU was received by the UE. The KPI type\n is MEAN in unit of 0.1 ms.",
+		"Formula": "This KPI is the weighted average of DL packet delay between PSA UPF\n and UE, for all N3 interfaces (modelled by EP\\_N3 MOIs) and N9\n interfaces (modelled by EP\\_N9 MOIs) of all PSA UPFs supporting the\n network slice (modelled by NetworkSlice MOI) identified by the S-NSSAI.\n > This KPI is calculated in the equation below, where Wn3 and Wn9 are\n > the measurements for the weighted average, Wn3 is one of the\n > following:\n \\- the data volume of DL GTP PDUs transmitted by PSA UPF on the N3\n interface;\n \\- the number of DL GTP PDUs transmitted by PSA UPF on the N3 interface;\n \\- any other types of weight defined by the consumer of KPI.\n > And Wn9 is one of the following:\n \\- the data volume of DL GTP PDUs transmitted by PSA UPF on the N9\n interface;\n \\- the number of DL GTP PDUs transmitted by PSA UPF on the N9 interface;\n \\- any other types of weight defined by the consumer of KPI.\n > DelayE2EDlNs =\n > ![](./attachments/28552-i50/media/image52.png)![](./attachments/28552-i50/media/image52.png)\n >\n > Where the *SNSSAI* identifies the S-NSSAI.",
+		"KPI Object": "NetworkSlice",
+		"Section": "Integrity KPI (6.3) >> Upstream throughput for network and Network Slice Instance (6.3.2)",
+		"Title": "Upstream throughput for network and Network Slice Instance (6.3.2)"
+	},
+	{
+		"Name": "UTSNSI",
+		"Description": "This KPI describes the upstream throughput of one single network\n slice by computing the packet size for each successfully received UL\n packet through the network slice during each observing granularity\n period and is used to evaluate integrity performance of the end-to-end\n network slice. It is obtained by measuring the total number of upstream\n octets provided by N3 interface from NG-RAN to all UPFs, related to the\n single network slice, divided by the granularity period (in\n milliseconds). The KPI unit is kbit/s and the KPI type is MEAN.",
+		"Formula": "![](./attachments/28552-i50/media/image53.png)![](./attachments/28552-i50/media/image53.png)",
+		"KPI Object": "NetworkSlice, SubNetwork",
+		"Section": "Integrity KPI (6.3) >> Downstream throughput for Single Network Slice Instance (6.3.3)",
+		"Title": "Downstream throughput for Single Network Slice Instance (6.3.3)"
+	},
+	{
+		"Name": "DTSNSI",
+		"Description": "This KPI describes the downstream throughput of one single network\n slice instance by computing the packet size for each successfully\n transmitted DL packet through the network slice instance during each\n observing granularity period and is used to evaluate integrity\n performance of the end-to-end network slice instance. It is obtained by\n measuring the total number of downstream octets provided by N3 interface\n from all UPFs to NG-RAN, related to the single network slice, divided by\n the granularity period (in milliseconds). The KPI unit is kbit/s and the\n KPI type is MEAN.",
+		"Formula": "![](./attachments/28552-i50/media/image54.png)![](./attachments/28552-i50/media/image55.png)![](./attachments/28552-i50/media/image55.png)",
+		"KPI Object": "NetworkSlice, SubNetwork",
+		"Section": "Integrity KPI (6.3) >> Upstream Throughput at N3 interface (6.3.4)",
+		"Title": "Upstream Throughput at N3 interface (6.3.4)"
+	},
+	{
+		"Name": "UGTPTN",
+		"Description": "This KPI describes the throughput of incoming GTP data packets on\n the N3 interface (measured at UPF) which have been generated by the\n GTP-U protocol entity on the N3 interface, during a granularity period.\n This KPI is used to evaluate upstream GTP throughput integrity\n performance at the N3 interface. It is obtained by measuring the total\n number of octets GTP data packets upstream throughput provided by N3\n interface from NG-RAN to UPF, divided by the granularity period (in\n milliseconds). The KPI unit is kbit/s and the KPI type is MEAN.",
+		"Formula": "![](./attachments/28552-i50/media/image56.png)![](./attachments/28552-i50/media/image56.png)",
+		"KPI Object": "UPFFunction",
+		"Section": "Integrity KPI (6.3) >> Downstream Throughput at N3 interface (6.3.5)",
+		"Title": "Downstream Throughput at N3 interface (6.3.5)"
+	},
+	{
+		"Name": "DGTPTN",
+		"Description": "This KPI describes the throughput of downstream GTP data packets on\n the N3 interface (transmitted downstream from UPF) which have been\n generated by the GTP-U protocol entity on the N3 interface, during a\n granularity period. This KPI is used to evaluate integrity performance\n at N3 interface. It is obtained by measuring the total number of octets\n GTP data packets downstream throughput provided by N3 interface from UPF\n to NG-RAN, divided by the granularity period (in milliseconds). The KPI\n unit is kbit/s and the KPI type is MEAN.",
+		"Formula": "![](./attachments/28552-i50/media/image57.png)![](./attachments/28552-i50/media/image57.png)",
+		"KPI Object": "UPFFunction",
+		"Section": "Integrity KPI (6.3) >> RAN UE Throughput (6.3.6) >> DL RAN UE throughput (6.3.6.3) >> DL RAN UE throughput for a NRCellDU (6.3.6.3.1)",
+		"Title": "DL RAN UE throughput for a NRCellDU (6.3.6.3.1)"
+	},
+	{
+		"Name": "DlUeThroughput _Cell",
+		"Description": "This KPI describes the average DL RAN UE throughput for a NRCellDU\n The KPI type is MEAN in kbit per second. This KPI can optionally be\n split into KPIs per QoS level (mapped 5QI or QCI in NR option 3) and per\n S-NSSAI.",
+		"Formula": "Below is the equation for average DL RAN UE throughput for a\n NRCellDU:\n DlUeThroughput \\_Cell = DRB.UEThpDl;\n and optionally: DlUeThroughput \\_Cell.*QOS* = DRB.UEThpDl.*QOS*, where\n *QOS* identifies the target quality of service class;\n > and optionally: DlUeThroughput \\_Cell.*SNSSAI* = DRB.UEThpDl.*SNSSAI*,\n > where *SNSSAI* identifies the S-NSSAI.",
+		"KPI Object": "NRCellDU",
+		"Section": "Integrity KPI (6.3) >> RAN UE Throughput (6.3.6) >> DL RAN UE throughput (6.3.6.3) >> DL RAN UE throughput for a sub-network (6.3.6.3.2)",
+		"Title": "DL RAN UE throughput for a sub-network (6.3.6.3.2)"
+	},
+	{
+		"Name": "DlUeThroughput _SNw",
+		"Description": "This KPI describes the average DL RAN UE throughput for a\n sub-network. The KPI type is MEAN in kbit per second. This KPI can\n optionally be split into KPIs per QoS level (mapped 5QI or QCI in NR\n option 3) and per S-NSSAI.",
+		"Formula": "Below is the equation for average DL RAN UE throughput for a\n sub-network, where\n > \\- W is the measurement for the weighted average, it is one of the\n > following:\n >\n > \\- the DL data volume of the NR cell;\n >\n > \\- a weight defined by the consumer of KPI\n >\n > \\- the \\#NRCellDU is the number of NRCellDU’s in the SubNetwork.\n >\n > ![](./attachments/28552-i50/media/image59.png)![](./attachments/28552-i50/media/image59.png)\n > ![](./attachments/28552-i50/media/image60.png)![](./attachments/28552-i50/media/image60.png)\n >\n > *and optionally KPI on SubNetwork level per QoS and per S-NSSAI:*\n >\n > ![](./attachments/28552-i50/media/image61.png)![](./attachments/28552-i50/media/image61.png)\n > ![](./attachments/28552-i50/media/image62.png)![](./attachments/28552-i50/media/image62.png)\n >\n > ![](./attachments/28552-i50/media/image63.png)![](./attachments/28552-i50/media/image63.png)\n > ![](./attachments/28552-i50/media/image64.png)![](./attachments/28552-i50/media/image64.png)",
+		"KPI Object": "SubNetwork",
+		"Section": "Integrity KPI (6.3) >> RAN UE Throughput (6.3.6) >> DL RAN UE throughput (6.3.6.3) >> DL RAN UE throughput for a network slice subnet (6.3.6.3.3)",
+		"Title": "DL RAN UE throughput for a network slice subnet (6.3.6.3.3)"
+	},
+	{
+		"Name": "DlUeThroughput _Nss",
+		"Description": "This KPI describes the average DL RAN UE throughput for a network\n slice subnet. The KPI type is MEAN in kbit per second.",
+		"Formula": "Below is the equation for average DL RAN UE throughput for a network\n slice subnet, where\n > \\- W is the measurement for the weighted average, it is one of the\n > following:\n >\n > \\- the DL data volume of the NR cell;\n >\n > \\- a weight defined by the consumer of KPI\n >\n > \\- the \\#NRCellDU is the number of NRCellDU’s associated with the\n > NetworkSliceSubnet.\n >\n > ![](./attachments/28552-i50/media/image65.png)![](./attachments/28552-i50/media/image65.png)\n > ![](./attachments/28552-i50/media/image64.png)![](./attachments/28552-i50/media/image64.png)*,\n > where the SNSSAI identifies the S-NSSAI that the* NetworkSliceSubnet\n > supports.",
+		"KPI Object": "NetworkSliceSubnet",
+		"Section": "Integrity KPI (6.3) >> RAN UE Throughput (6.3.6) >> UL RAN UE throughput (6.3.6.4) >> UL RAN UE throughput for a NRCellDU (6.3.6.4.1)",
+		"Title": "UL RAN UE throughput for a NRCellDU (6.3.6.4.1)"
+	},
+	{
+		"Name": "UlUeThroughput_Cell",
+		"Description": "This KPI describes the average UL RAN UE throughput for a NRCellDU\n The KPI type is MEAN in kbit per second. This KPI can optionally be\n split into KPIs per QoS level (mapped 5QI or QCI in NR option 3) and per\n S-NSSAI.",
+		"Formula": "Below is the equation for average UL RAN UE throughput for a\n NRCellDU:\n UlUeThroughput \\_Cell = DRB.UEThpUl;\n and optionally: UlUeThroughput\\_Cell.*QOS* = DRB.UEThpUl.*QOS*, where\n *QOS* identifies the target quality of service class;\n > and optionally: UlUeThroughput\\_Cell.*SNSSAI* = DRB.UEThpUl.*SNSSAI*,\n > where *SNSSAI* identifies the S-NSSAI.",
+		"KPI Object": "NRCellDU",
+		"Section": "Integrity KPI (6.3) >> RAN UE Throughput (6.3.6) >> UL RAN UE throughput (6.3.6.4) >> UL RAN UE throughput for a sub-network (6.3.6.4.2)",
+		"Title": "UL RAN UE throughput for a sub-network (6.3.6.4.2)"
+	},
+	{
+		"Name": "UlUeThroughput_SNw",
+		"Description": "This KPI describes the average UL RAN UE throughput for a\n sub-network. The KPI type is MEAN in kbit per second. This KPI can\n optionally be split into KPIs per QoS level (mapped 5QI or QCI in NR\n option 3) and per S-NSSAI.",
+		"Formula": "Below is the equation for average UL RAN UE throughput for a\n sub-network, where\n > \\- W is the measurement for the weighted average, it is one of the\n > following:\n >\n > \\- the UL data volume of the NR cell;\n >\n > \\- a weight defined by the consumer of KPI\n >\n > \\- the \\#NRCellDU is the number of NRCellDU’s in the SubNetwork.\n >\n > ![](./attachments/28552-i50/media/image66.png)![](./attachments/28552-i50/media/image66.png)\n > ![](./attachments/28552-i50/media/image67.png)![](./attachments/28552-i50/media/image67.png)\n >\n > *and optionally KPI on SubNetwork level per QoS and per S-NSSAI:*\n >\n > ![](./attachments/28552-i50/media/image68.png)![](./attachments/28552-i50/media/image68.png)\n > ![](./attachments/28552-i50/media/image69.png)![](./attachments/28552-i50/media/image69.png)\n >\n > ![](./attachments/28552-i50/media/image70.png)![](./attachments/28552-i50/media/image70.png)\n > ![](./attachments/28552-i50/media/image71.png)![](./attachments/28552-i50/media/image71.png)",
+		"KPI Object": "SubNetwork",
+		"Section": "Integrity KPI (6.3) >> RAN UE Throughput (6.3.6) >> UL RAN UE throughput (6.3.6.4) >> UL RAN UE throughput for a network slice subnet (6.3.6.4.3)",
+		"Title": "UL RAN UE throughput for a network slice subnet (6.3.6.4.3)"
+	},
+	{
+		"Name": "UlUeThroughput _Nss",
+		"Description": "This KPI describes the average UL RAN UE throughput for a network\n slice subnet. The KPI type is MEAN in kbit per second.",
+		"Formula": "Below is the equation for average UL RAN UE throughput for a network\n slice subnet, where\n > \\- W is the measurement for the weighted average, it is one of the\n > following:\n >\n > \\- the UL data volume of the NR cell;\n >\n > \\- a weight defined by the consumer of KPI\n >\n > \\- the \\#NRCellDU is the number of NRCellDU’s associated with the\n > NetworkSliceSubnet.\n >\n > ![](./attachments/28552-i50/media/image72.png)![](./attachments/28552-i50/media/image72.png)\n > ![](./attachments/28552-i50/media/image71.png)![](./attachments/28552-i50/media/image71.png)*,\n > where the SNSSAI identifies the S-NSSAI that the* NetworkSliceSubnet\n > supports.",
+		"KPI Object": "NetworkSliceSubnet",
+		"Section": "Integrity KPI (6.3) >> Upstream throughput for 5G VN Group (6.3.7)",
+		"Title": "Upstream throughput for 5G VN Group (6.3.7)"
+	},
+	{
+		"Name": "UTSNSI_5GVNGroup",
+		"Description": "This KPI describes the upstream throughput of one 5G VN Group by\n computing the packet size for each successfully received UL packet\n during each observing granularity period and is used to evaluate\n integrity performance of the 5G VN Group. It is obtained by measuring\n the total number of upstream octets provided by N3 interface from NG-RAN\n to all UPFs, related to one 5G VN Group, divided by the granularity\n period (in milliseconds). The KPI unit is kbit/s and the KPI type is\n MEAN.",
+		"Formula": "![](./attachments/28552-i50/media/image53.png)\n > *UTSNSI\\_5GVNGroup*![](./attachments/28552-i50/media/image73.png)![](./attachments/28552-i50/media/image73.png)\n > \\*8",
+		"KPI Object": "NetworkSlice, SubNetwork",
+		"Section": "Integrity KPI (6.3) >> Downstream throughput for 5G VN Group (6.3.8)",
+		"Title": "Downstream throughput for 5G VN Group (6.3.8)"
+	},
+	{
+		"Name": "DTSNSI_5GVNGroup",
+		"Description": "This KPI describes the downstream throughput of one 5G VN Group by\n computing the packet size for each successfully transmitted DL packet\n through the 5G VN Group during each observing granularity period and is\n used to evaluate integrity performance of the 5G VN Group. It is\n obtained by measuring the total number of downstream octets provided by\n N3 interface from all UPFs to NG-RAN, related to one 5G VN Group,\n divided by the granularity period (in milliseconds). The KPI unit is\n kbit/s and the KPI type is MEAN.",
+		"Formula": "![](./attachments/28552-i50/media/image54.png)![](./attachments/28552-i50/media/image55.png)\n > *DTSNSI\\_5GVNGroup*![](./attachments/28552-i50/media/image74.png)![](./attachments/28552-i50/media/image74.png)\n > \\*8",
+		"KPI Object": "NetworkSlice, SubNetwork",
+		"Section": "Utilization KPI (6.4) >> Mean number of PDU sessions of network and network Slice Instance (6.4.1)",
+		"Title": "Mean number of PDU sessions of network and network Slice Instance (6.4.1)"
+	},
+	{
+		"Name": "PDUSesMeanNbr",
+		"Description": "This KPI describes the mean number of PDU sessions that are\n successfully established in a network slice . It is obtained by\n successful PDU session establishment procedures of SMFs which is related\n to the network slice . It is an integer. The KPI type is MEAN.",
+		"Formula": "![](./attachments/28552-i50/media/image75.png)",
+		"KPI Object": "NetworkSlice",
+		"Section": "Utilization KPI (6.4) >> Virtualised Resource Utilization of Network Slice Instance (6.4.2)",
+		"Title": "Virtualised Resource Utilization of Network Slice Instance (6.4.2)"
+	},
+	{
+		"Name": "VirtualResUtilizaiton",
+		"Description": "This KPI describes utilization of virtualised resource (e.g\n processor, memory, disk) that are allocated to a network slice . It is\n obtained by the usage of virtualised resource (e.g. processor, memory,\n disk) divided by the system capacity that allocated to the network slice\n . It is a percentage, The KPI type is Ratio.\n Note: In the present document, this KPI is for the scenario when NF is\n not shared between different network slice .",
+		"Formula": "",
+		"KPI Object": "NetworkSlice",
+		"Section": "Utilization KPI (6.4) >> PDU session establishment time of network slice (6.4.3)",
+		"Title": "PDU session establishment time of network slice (6.4.3)"
+	},
+	{
+		"Name": "PDUEstTime",
+		"Description": "This KPI describes the time of successful PDU session establishment\n which related to one single network slice and is used to evaluate\n utilization provided by the end-to-end network slice and network\n performance. It is obtained by measuring the time between the receipt by\n SMF from AMF of \" Nsmf\\_PDUSession\\_UpdateSMContext Request \", which\n includes N2 SM information received from (R)AN to the SMF and the\n sending of a \" Nsmf\\_PDUSession\\_CreateSMContext Request or\n Nsmf\\_PDUSession\\_UpdateSMContext Request \" message from AMF to the SMF.\n It is a time interval (millisecond). The KPI type is MEAN.",
+		"Formula": "PDUEstTime = SM.PduSessionTimeMean.SNSSAI",
+		"KPI Object": "NetworkSlice",
+		"Section": "Utilization KPI (6.4) >> Mean number of successful periodic registration updates of Single Network Slice  (6.4.4)",
+		"Title": "Mean number of successful periodic registration updates of Single Network Slice  (6.4.4)"
+	},
+	{
+		"Name": "RegUpdMeanNbr**.**\n **b) This KPI describes the mean number of successfully periodic\n registration updates in a network slice** **at the AMF. It is obtained\n by summing successful of periodic registration updates at the AMFs which\n is related to the network slice after registration accept by the AMF to\n the UE that sent the periodic registration update request. It is an\n integer. The KPI type is MEAN.**",
+		"Formula": "![](./attachments/28552-i50/media/image79.png)",
+		"KPI Object": "NetworkSlice",
+		"Section": "Utilization KPI (6.4) >> Maximum number of PDU sessions of network slice (6.4.5)",
+		"Title": "Maximum number of PDU sessions of network slice (6.4.5)"
+	},
+	{
+		"Name": "PDUSesMaxNbr",
+		"Description": "This KPI describes the maximum number of PDU sessions that are\n successfully established in a network slice. It is obtained by\n successful PDU session establishment procedures of SMFs which is related\n to the network slice. It is an integer. The KPI type is MEAN.",
+		"Formula": "",
+		"KPI Object": "NetworkSlice",
+		"Section": "Utilization KPI (6.4) >> PDU session establishment time of 5G VN Group (6.4.6)",
+		"Title": "PDU session establishment time of 5G VN Group (6.4.6)"
+	},
+	{
+		"Name": "Group-levelPDUEstTime",
+		"Description": "This KPI describes the time of successful PDU session establishment\n which related to one 5G VN Group and is used to evaluate utilization\n provided by the end-to-end network slice and network performance. It is\n obtained by measuring the time between the receipt by SMF from AMF of \"\n Nsmf\\_PDUSession\\_UpdateSMContext Request \", which includes N2 SM\n information received from (R)AN to the SMF and the sending of a \"\n Nsmf\\_PDUSession\\_CreateSMContext Request\" or\n \"Nsmf\\_PDUSession\\_UpdateSMContext Request\" message from AMF to the SMF.\n It is a time interval (millisecond). The KPI type is MEAN.",
+		"Formula": "Group-levelPDUEstTime = SM.PduSessionTimeMean.InternalgroupID",
+		"KPI Object": "NetworkSlice",
+		"Section": "Retainability KPI (6.5) >> QoS flow Retainability (6.5.1) >> Definition (6.5.1.1)",
+		"Title": "Definition (6.5.1.1)"
+	},
+	{
+		"Name": "QoSRetain_R1, QoSRetain_R2",
+		"Description": "This KPI shows how often an end-user abnormally loses a QoS flow\n during the time the QoS flow is used. It is obtained by number of QoS\n flows with data in a buffer that was abnormally released, normalized\n with number of data session time units. The unit of this KPI is “active\n release / second”. The KPI type is MEAN.",
+		"Formula": "To measure QoS flow Retainability for a single QoS level (R1) is\n fairly straight forward.  \n   \n ![](./attachments/28552-i50/media/image81.png)![](./attachments/28552-i50/media/image82.png)![](./attachments/28552-i50/media/image82.png)  \n However to measure the QoS flow Retainability for UEs is not as straight\n forward. The measurement R1 is defined to look at the activity level of\n just one QoS level at the time, so to use this formula and measurements\n in an aggregated way to get QoS flow Retainability on UE level will not\n be accurate (e.g. for an UE with multiple QoS flows there might be QoS\n flows that are active at the same time, hence aggregating the QoS level\n measurements for session time will give a larger session time than the\n total UE session time. See picture below).  \n   \n   \n Hence a measurement QoS flow Retainability on UE level is defined (R2)\n to provide a measurement for the overall QoS flow Retainability.  \n   \n ![](./attachments/28552-i50/media/image84.png)![](./attachments/28552-i50/media/image84.png)",
+		"KPI Object": "SubNetwork, NRCellCU",
+		"Remark": "The definition of the service provided by 5GS is QoS flows",
+		"Section": "Retainability KPI (6.5) >> DRB Retainability (6.5.2) >> Definition (6.5.2.1)",
+		"Title": "Definition (6.5.2.1)"
+	},
+	{
+		"Name": "DRBRetain",
+		"Description": "This KPI shows how often an end-user abnormally loses a DRB during\n the time the DRB is active. It is obtained by number of DRBs that were\n abnormally released and that were active at the time of release,\n normalized with number of data session time units. The unit of this KPI\n is \"active release / second\". The KPI type is MEAN.",
+		"Formula": "DRB Retainability for a single mapped 5QI level (R1) and for a\n single S-NSSAI (R1) are defined as:\n ![](./attachments/28552-i50/media/image86.png)![](./attachments/28552-i50/media/image86.png)\n > and\n ![](./attachments/28552-i50/media/image87.png)![](./attachments/28552-i50/media/image87.png)",
+		"KPI Object": "SubNetwork, NRCellCU",
+		"Remark": "The definition of the service provided by 5GS is DRBs",
+		"Section": "Mobility KPI  (6.6) >> NG-RAN handover success rate (6.6.1)",
+		"Title": "NG-RAN handover success rate (6.6.1)"
+	},
+	{
+		"Name": "GRANHOSR",
+		"Description": "A KPI that shows how often a handover within NR-RAN is successful,\n regardless if the handover was made due to bad coverage or any other\n reason. This KPI is obtained by successful handovers to the same or\n another gNB divided by attempted handovers to the same or another gNB.\n This KPI covers legacy Handover.\n c)![](./attachments/28552-i50/media/image88.png)![](./attachments/28552-i50/media/image89.png)![](./attachments/28552-i50/media/image90.png)![](./attachments/28552-i50/media/image90.png)",
+		"KPI Object": "SubNetwork, NRCellCU",
+		"Section": "Mobility KPI  (6.6) >> Mean Time of Inter-gNB handover Execution of Network Slice (6.6.2)",
+		"Title": "Mean Time of Inter-gNB handover Execution of Network Slice (6.6.2)"
+	},
+	{
+		"Name": "InterGNBHOMeanTime**.**",
+		"Description": "**This KPI describes the time** of **successful** Mean Time of\n Inter-gNB handover which related to one single network slice and is used\n to evaluate utilization provided by the end-to-end network slice and\n network performance**.** This KPI is obtained by measuring the time\n between the receipt by the Source NG-RAN from the Target NG-RAN of a\n “Release Resource\" and the sending of a \" N2 Path Switch Request \"\n message from Source NG-RAN to the Target NG-RAN over a granularity\n period. The unit of this KPI is millisecond.",
+		"KPI Object": "Subnetwork",
+		"Section": "Mobility KPI  (6.6) >> Successful rate of mobility registration updates of Single Network Slice (6.6.3)",
+		"Title": "Successful rate of mobility registration updates of Single Network Slice (6.6.3)"
+	},
+	{
+		"Name": "MobilityRegUpdateSR",
+		"Description": "This KPI describes the successful rate of mobility registration\n updates in a network slice e at the AMF. This KPI is obtained by\n deviding the number of successful mobility registration updates at the\n AMFs by number of mobility registration update requests received by the\n AMFs of single network slice.",
+		"KPI Object": "NetworkSlice",
+		"Section": "Mobility KPI  (6.6) >> 5GS to EPS handover success rate (6.6.4)",
+		"Title": "5GS to EPS handover success rate (6.6.4)"
+	},
+	{
+		"Name": "5GSEPSHOSR",
+		"Description": "A KPI that shows how often a handover from 5GS to EPS is successful,\n regardless if the handover was made due to bad coverage or any other\n reason. This KPI is obtained by successful handovers from 5GS to EPS\n system divided by the total number of handovers attempt’s from 5GS to\n EPS system.",
+		"Formula": "![](./attachments/28552-i50/media/image91.png)![](./attachments/28552-i50/media/image91.png)",
+		"KPI Object": "SubNetwork, NRCellCU",
+		"Section": "Mobility KPI  (6.6) >> NG-RAN handover success rate for all handover types (6.6.5)",
+		"Title": "NG-RAN handover success rate for all handover types (6.6.5)"
+	},
+	{
+		"Name": "GRANHOSRA",
+		"Description": "A KPI that shows how often a handover within NR-RAN is successful,\n regardless if the handover was made due to bad coverage or any other\n reason. This KPI is obtained by successful handovers to the same or\n another gNB divided by attempted handovers to the same or another gNB.\n This KPI covers legacy Handover, Conditional Handover and DAPS Handover.\n c)  \n ![](./attachments/28552-i50/media/image92.png)  \n ![](./attachments/28552-i50/media/image93.png)  \n ![](./attachments/28552-i50/media/image94.png)  \n ![](./attachments/28552-i50/media/image95.png)  \n ![](./attachments/28552-i50/media/image96.png)![](./attachments/28552-i50/media/image96.png)![](./attachments/28552-i50/media/image96.png)\n ![](./attachments/28552-i50/media/image88.png)![](./attachments/28552-i50/media/image89.png)![](./attachments/28552-i50/media/image90.png)d)\n SubNetwork, NRCellCU.",
+		"Section": "Energy Efficiency (EE) KPI (6.7) >> NG-RAN data Energy Efficiency (EE) (6.7.1) >> Definition (6.7.1.1)",
+		"Title": "Definition (6.7.1.1)"
+	},
+	{
+		"Name": "EE<sub>MN,DV</sub>",
+		"Description": "A KPI that shows mobile network data energy efficiency in\n operational NG-RAN. Data Volume (DV) divided by Energy Consumption (EC)\n of the considered network elements. The unit of this KPI is bit/J.",
+		"Formula": "EE<sub>MN,DV\n </sub>\n > ![](./attachments/28552-i50/media/image97.png) - for non-split gNBs;\n >\n > ![](./attachments/28552-i50/media/image98.png) - for split gNBs;",
+		"KPI Object": "SubNetwork",
+		"Remark": "The Data Volume (in kbits) is obtained by measuring amount of DL/UL\n PDCP SDU bits of the considered network elements over the measurement\n period. For split-gNBs, the Data Volume is calculated per Interface\n (F1-U, Xn-U, X2-U). The Energy Consumption (in kWh) is obtained by\n measuring the PEE.Energy of the considered network elements over the\n same period of time. The samples are aggregated at the NG-RAN node\n level. The 3GPP management system responsible for the management of the\n gNB (single or multiple vendor gNB) shall be able to collect PEE\n measurements data from all PNFs in the gNB, in the same way as the other\n PM measurements.",
+		"Section": "Energy Efficiency (EE) KPI (6.7) >> Network slice Energy Efficiency (EE) (6.7.2) >> Energy efficiency of eMBB network slice (6.7.2.2)",
+		"Title": "Energy efficiency of eMBB network slice (6.7.2.2)"
+	},
+	{
+		"Name": "EE<sub>eMBB,DV</sub>",
+		"Description": "A KPI that shows the energy efficiency of network slices of type\n eMBB. The P<sub>ns</sub> for a network slice of type eMBB is obtained by\n summing up UL and DL data volumes at N3 interface(s) of the network\n slice.\n ![](./attachments/28552-i50/media/image100.emf)\n , where *SNSSAI* identifies the S-NSSAI.\n This KPI is obtained by the sum of UL and DL data volumes at N3\n interface(s) of the network slice, divided by the energy consumption of\n the network slice. The unit of this KPI is bit/J.",
+		"Formula": "![](./attachments/28552-i50/media/image101.emf)",
+		"KPI Object": "NetworkSlice",
+		"Remark": "In case of redundant transmission paths over the N3 interface for\n high reliability communication (cf. TS 23.501 \\[7\\] clause 5.33.2), it\n is expected that the data volume is counted once. In particular:\n \\- In case of Dual Connectivity based end to end Redundant User Plane\n Paths (cf. TS 23.501 \\[7\\] clause 5.33.2.1), in which a UE may set up\n two redundant PDU Sessions over the 5G network, the Data Volume related\n to only one PDU session is to be considered;\n \\- In case of redundant transmission with two N3 tunnels between the PSA\n UPF and a single NG-RAN node (cf. TS 23.501 \\[7\\] figure 5.33.2.2-1)\n which are associated with a single PDU Session, the Data Volume related\n to only one N3 tunnel is to be considered;\n \\- In case of two N3 and N9 tunnels between NG-RAN and PSA UPF for\n redundant transmission (cf. TS 23.501 \\[7\\] figure 5.33.2.2-2)\n associated with a single PDU Session, the Data Volume related to only\n one N3 tunnel is to be considered.\n For the measurement of the energy efficiency of the 5G core network, the\n 3GPP management system in charge of collecting the data volume\n measurements listed here above shall consider them only once in case of\n redundant transmission over the N3 interface.\n #### 6.7.2.2a Energy efficiency of eMBB network slice – RAN-based\n ##### 6.7.2.2a.1 Definition",
+		"Section": "Energy Efficiency (EE) KPI (6.7) >> Network slice Energy Efficiency (EE) (6.7.2) >> Energy efficiency of eMBB network slice (6.7.2.2)",
+		"Title": "Energy efficiency of eMBB network slice (6.7.2.2)"
+	},
+	{
+		"Name": "EE<sub>RANonlyeMBB,DV</sub>",
+		"Description": "A KPI that shows the energy efficiency of network slices of type\n eMBB based on NR measurements. The Pns for a network slice of type eMBB\n is obtained by summing up UL and DL data volumes at F1-U, Xn-U and X2-U\n interface(s) of gNBs, on a per S-NSSAI basis.",
+		"Formula": "For non-split gNBs:\n ![](./attachments/28552-i50/media/image102.emf)\n , where:\n \\- DRB.PdcpSduVolumeUl.*SNSSAI* is the Data Volume (amount of PDCP SDU\n bits) in the uplink delivered to PDCP layer per S-NSSAI - see TS 28.552\n \\[4\\] clause 5.1.2.1.2.1,\n \\- DRB.PdcpSduVolumeDl.*SNSSAI* is the Data Volume (amount of PDCP SDU\n bits) in the downlink delivered to PDCP layer per S-NSSAI - see TS\n 28.552 \\[4\\] clause 5.1.2.1.1.1.\n For split gNBs:\n ![](./attachments/28552-i50/media/image103.emf)\n , where:\n \\- DRB.F1uPdcpSduVolumeDl.*SNSSAI* is the number of DL PDCP SDU bits\n sent to GNB-DU (F1-U interface) per S-NSSAI - see TS 28.552 \\[4\\] clause\n 5.1.3.6.2.3,\n \\- DRB.F1uPdcpSduVolumeUl.*SNSSAI* is the number of UL PDCP SDU bits\n entering the GNB-CU-UP from GNB-DU (F1-U interface) per S-NSSAI - see TS\n 28.552 \\[4\\] clause 5.1.3.6.2.4,\n \\- DRB.XnuPdcpSduVolumeDl.*SNSSAI* is the number of DL PDCP SDU bits\n sent to external gNB-CU-UP (Xn-U interface) per S-NSSAI - see TS 28.552\n \\[4\\] clause 5.1.3.6.2.3,\n \\- DRB.XnuPdcpSduVolumeUl.*SNSSAI* is the number of UL PDCP SDU bits\n entering the GNB-CU-UP from external gNB-CU-UP (Xn-U interface) per\n S-NSSAI - see TS 28.552 \\[4\\] clause 5.1.3.6.2.4,\n \\- DRB.X2uPdcpSduVolumeDl.*SNSSAI* is the number of DL PDCP SDU bits\n sent to external eNB (X2-U interface) per S-NSSAI - see TS 28.552 \\[4\\]\n clause 5.1.3.6.2.3,\n \\- DRB.X2uPdcpSduVolumeUl.*SNSSAI* is the number of UL PDCP SDU bits\n entering the GNB-CU-UP from external eNB (X2-U interface) per S-NSSAI -\n see TS 28.552 \\[4\\] clause 5.1.3.6.2.4.\n The final Network Slice EE KPI definition, based on Data Volume, for\n RAN-only eMBB type of network slice, would be defined as follows:\n ![](./attachments/28552-i50/media/image104.emf)\n , where EC<sub>RANonlyns</sub> is the energy consumption of the RAN-only\n network slice over the same observation period.\n NOTE: Void",
+		"KPI Object": "NetworkSlice",
+		"Section": "Energy Efficiency (EE) KPI (6.7) >> Network slice Energy Efficiency (EE) (6.7.2) >> Energy efficiency of URLLC network slice (6.7.2.3) >> Based on latency of the network slice (6.7.2.3.2)",
+		"Title": "Based on latency of the network slice (6.7.2.3.2)"
+	},
+	{
+		"Name": "EE<sub>URLLC,Latency</sub>",
+		"Description": "A KPI that shows the energy efficiency of network slices of type\n URLLC. The P<sub>ns</sub> for a network slice of type URLLC is the\n inverse of the average end-to-end User Plane (UP) latency of the network\n slice. In this KPI variant, latency are the only factor considered for\n evaluating the performance of network slice.\n ![](./attachments/28552-i50/media/image105.emf)\n , where ‘Network slice mean latency’ is defined as the average\n end-to-end User Plane (UP) latency of the network slice, and where the\n average end-to-end User Plane (UP) latency for one S-NSSAI is defined\n by:\n ![](./attachments/28552-i50/media/image106.emf)\n This KPI is obtained by the inverse of the average end-to-end User Plane\n (UP) latency of the network slice divided by the energy consumption of\n the network slice. The unit of this KPI is (0.1ms \\* J)<sup>-1</sup>.",
+		"Formula": "![](./attachments/28552-i50/media/image107.emf)",
+		"KPI Object": "NetworkSlice",
+		"Section": "Energy Efficiency (EE) KPI (6.7) >> Network slice Energy Efficiency (EE) (6.7.2) >> Energy efficiency of URLLC network slice (6.7.2.3) >> Based on both latency and Data Volume (DV) of the network slice (6.7.2.3.3)",
+		"Title": "Based on both latency and Data Volume (DV) of the network slice (6.7.2.3.3)"
+	},
+	{
+		"Name": "EE<sub>URLLC,DV,Latency</sub>",
+		"Description": "A KPI that shows the energy efficiency of network slices of type\n URLLC. The P<sub>ns</sub> for a network slice of type URLLC is the sum\n of UL and DL traffic volumes at N3 or N9 interface(s) on a per S-NSSAI\n basis multiplied by the inverse of the end-to-end User Plane (UP)\n latency of the network slice. In this KPI variant, data volume and\n latency are two factors considered for evaluating the performance of\n network slice. This KPI is applicable for the cases where, for example,\n the URLLC network slice is deployed and operators want to evaluate the\n Energy Efficiency of the slice at different periods of time, such as the\n busy hours in the morning and the idle hours in the mid night, in which\n both latency performance and the data volume performance can vary.\n ![](./attachments/28552-i50/media/image108.emf)\n where\n ![](./attachments/28552-i50/media/image109.emf)\n ![](./attachments/28552-i50/media/image110.emf)\n w<sub>N3</sub> and w<sub>N9</sub> are the weight for DV<sub>N3</sub> and\n DV<sub>N9</sub> respectively. w<sub>N3</sub> and w<sub>N9</sub> can be\n decided according to the deployment of PSA UPF. For example, in cases\n where PSA UPF has only N9 tunnels, such as the ones described in TS\n 23.501\\[2\\] clause 5.6.4 and clause 5.33.2.2, w<sub>N3</sub> can be set\n to 0 and W<sub>N9</sub> can be set to 1, so that only N9 interface is\n considered. In the cases where PSA UPF has only N3 tunnels,\n w<sub>N3</sub> can be set to 1 and w<sub>N9</sub> can be set to 0, so\n that only N3 interface is considered.\n This KPI is obtained by the product of the sum of the weighted UL and DL\n traffic data volumes at N3 interface(s) or N9 interface of the PSA UPF\n of the network slice multiplied by the inverse of the end-to-end User\n Plane (UP) latency of the network slice, divided by the energy\n consumption of the network slice. The unit of this KPI is\n bit/(0.1ms\\*J).",
+		"Formula": "![](./attachments/28552-i50/media/image111.emf)",
+		"KPI Object": "NetworkSlice",
+		"Remark": "In case of redundant transmission paths for high reliability\n communication (TS 23.501 \\[7\\] clause 5.33.2), it is expected that the\n data volume is counted once. In particular:\n \\- In case of Dual Connectivity based end to end Redundant User Plane\n Paths ( TS 23.501 \\[7\\] clause 5.33.2.1), in which a UE may set up two\n redundant PDU Sessions over the 5G network, the Data Volume related to\n only one PDU session is to be considered;\n \\- In case of redundant transmission with two N3 tunnels between the PSA\n UPF and a single NG-RAN node (TS 23.501 \\[7\\] figure 5.33.2.2-1) which\n are associated with a single PDU Session, the Data Volume related to\n only one N3 tunnel is to be considered;\n \\- In case of two N3 and N9 tunnels between NG-RAN and PSA UPF for\n redundant transmission ( TS 23.501 \\[7\\] figure 5.33.2.2-2) associated\n with a single PDU Session, the Data Volume related to only one of the\n multiple N3/N9 tunnels for redundant transmission connecting to PSA UPF\n is considered. The main reason for this is that, if the traffic is\n counted more than once, it will increase artificially the\n EEURLLC,DV,Latency KPI.\n The 3GPP management system in charge of collecting the data volume\n measurements listed here above shall consider them only once in case of\n redundant transmission over the N3/N9 interface.",
+		"Section": "Energy Efficiency (EE) KPI (6.7) >> Network slice Energy Efficiency (EE) (6.7.2) >> Energy efficiency of MIoT network slice (6.7.2.4) >> Based on the number of registered subscribers of the network slice (6.7.2.4.1)",
+		"Title": "Based on the number of registered subscribers of the network slice (6.7.2.4.1)"
+	},
+	{
+		"Name": "EE<sub>MIoT,RegSubs</sub>",
+		"Description": "A KPI that shows the energy efficiency of network slices of type\n MIoT. In this case, the P<sub>ns</sub> for a network slice of type MIoT\n is the maximum number of subscribers registered to the network slice.\n ![](./attachments/28552-i50/media/image112.emf)\n , where *SNSSAI* identifies the S-NSSAI.\n This KPI is obtained by the maximum number of registered subscribers to\n the network slice divided by the energy consumption of the network\n slice. The unit of this KPI is user/J.",
+		"Formula": "![](./attachments/28552-i50/media/image113.emf)",
+		"KPI Object": "NetworkSlice",
+		"Section": "Energy Efficiency (EE) KPI (6.7) >> Network slice Energy Efficiency (EE) (6.7.2) >> Energy efficiency of MIoT network slice (6.7.2.4) >> Based on the number of active UEs in the network slice (6.7.2.4.2)",
+		"Title": "Based on the number of active UEs in the network slice (6.7.2.4.2)"
+	},
+	{
+		"Name": "EE<sub>MIoT,ActiveUEs</sub>",
+		"Description": "A KPI that shows the energy efficiency of network slices of type\n MIoT. In this case, the P<sub>ns</sub> for a network slice of type MIoT\n is the mean number of active UEs of the network slice.\n ![](./attachments/28552-i50/media/image114.emf)\n , where *SNSSAI* identifies the S-NSSAI.\n This KPI is obtained by the mean number of active UEs of the network\n slice divided by the energy consumption of the network slice. The unit\n of this KPI is UE/J.",
+		"Formula": "![](./attachments/28552-i50/media/image115.emf)",
+		"KPI Object": "NetworkSlice",
+		"Section": "Energy Efficiency (EE) KPI (6.7) >> 5G Energy Consumption (EC) (6.7.3) >> NF Energy Consumption (EC) (6.7.3.1) >> Definition (6.7.3.1.1)",
+		"Title": "Definition (6.7.3.1.1)"
+	},
+	{
+		"Name": "EC<sub>NF</sub>",
+		"Description": "This KPI describes the Energy Consumption (EC) of a 5G Network\n Function (NF). This KPI is obtained by summing up the energy consumption\n of PNF(s) and/or VNF(s) which compose the NF. The unit of this KPI is J.",
+		"Formula": "![](./attachments/28552-i50/media/image116.emf)\n \\- How a 5GC NF is composed of VNFs and PNFs is implementation specific.\n In particular, whether a VNF instance (respectively PNF) is shared or\n not between more than one NF is implementation specific. Hence, the case\n where a VNF instance (resp. PNF) is shared between multiple NFs is out\n of scope of the present document;\n \\- EC<sub>PNF</sub> represents the Energy Consumption (EC) of a PNF;\n \\- EC<sub>VNF</sub> represents the Energy Consumption (EC) of a VNF. It\n is obtained by summing up the Energy Consumption (EC) of all its\n constituent VNFCs;\n \\- In the present document:\n \\# EC<sub>PNF</sub> is measured according to ETSI ES 202 336-12 \\[10\\],\n \\# it is considered that EC<sub>VNF</sub> cannot be measured hence is\n estimated. Therefore the resulting EC<sub>NF</sub> KPI is defined as:\n ![](./attachments/28552-i50/media/image117.emf)",
+		"Section": "Energy Efficiency (EE) KPI (6.7) >> 5G Energy Consumption (EC) (6.7.3) >> NF Energy Consumption (EC) (6.7.3.1) >> Estimated Virtualized Network Function (VNF) energy consumption (6.7.3.1.2)",
+		"Title": "Estimated Virtualized Network Function (VNF) energy consumption (6.7.3.1.2)"
+	},
+	{
+		"Name": "EC<sub>VNF,estimated</sub>",
+		"Description": "A KPI that gives an estimation of the energy consumption of a VNF\n This KPI is obtained by summing up the estimated energy consumption of\n its constituent Virtualized Network Function Components (VNFC). The unit\n of this KPI is J.",
+		"Formula": "![](./attachments/28552-i50/media/image118.emf)",
+		"KPI Object": "ManagedFunction",
+		"Remark": "In this version of the document, the energy consumption of the VNFC\n is estimated as per clause 6.7.3.1.3.",
+		"Section": "Energy Efficiency (EE) KPI (6.7) >> 5G Energy Consumption (EC) (6.7.3) >> NF Energy Consumption (EC) (6.7.3.1) >> Estimated Virtualized Network Function Component (VNFC) energy consumption (6.7.3.1.3)",
+		"Title": "Estimated Virtualized Network Function Component (VNFC) energy consumption (6.7.3.1.3)"
+	},
+	{
+		"Name": "EC<sub>VNFC,estimated</sub>",
+		"Description": "A KPI that gives an estimation of the energy consumption of a VNFC\n In this version of the document, this KPI is obtained by taking the\n estimated energy consumption of the virtual compute resource instance on\n which the VNFC runs. The unit of this KPI is J.",
+		"Formula": "![](./attachments/28552-i50/media/image119.emf)",
+		"KPI Object": "ManagedFunction\n > e\\) In this version of the document, the energy consumption of the\n > virtual compute resource instance is estimated based on either:\n \\- its mean vCPU usage, as per clause 6.7.3.1.4. The method for\n calculating EC<sub>VNFC,estimated</sub> is described in TS 28.310 \\[9\\]\n clause 6.3.2.2.1, or\n \\- its mean vMemory usage, as per clause 6.7.3.1.5, or\n \\- its mean vDisk usage, as per clause 6.7.3.1.6, or\n \\- its I/O traffic volume, as per clause 6.7.3.1.7.",
+		"Section": "Energy Efficiency (EE) KPI (6.7) >> 5G Energy Consumption (EC) (6.7.3) >> NF Energy Consumption (EC) (6.7.3.1) >> Estimated virtual compute resource instance energy consumption based on mean vCPU usage (6.7.3.1.4)",
+		"Title": "Estimated virtual compute resource instance energy consumption based on mean vCPU usage (6.7.3.1.4)"
+	},
+	{
+		"Name": "EC<sub>virtualCompute,estimated,VCpuUsageMean</sub>",
+		"Description": "A KPI that gives an estimation of the energy consumption of a\n virtual compute resource instance. The energy consumption of a virtual\n compute resource instance X is estimated as a proportion of the energy\n consumption of the NFVI node on which the virtual compute resource\n instance X runs. This proportion is obtained by dividing the vCPU mean\n usage of the virtual compute resource instance X, by the sum of the vCPU\n mean usage of all virtual compute resource instances running on the same\n NFVI Node as X. The unit of this KPI is J.",
+		"Formula": "![](./attachments/28552-i50/media/image120.emf)",
+		"KPI Object": "ManagedFunction",
+		"Remark": "\\- VCpuUsageMean is the mean vCPU usage of the virtual compute resource\n instance during the observation period, provided by ETSI NFV MANO (see\n clause 7.1.2 of ETSI GS NFV-IFA 027 \\[11\\]),\n \\- ![](./attachments/28552-i50/media/image121.emf) is sum of the vCPU\n mean usage of all virtual compute resource instances running on the same\n NFVI Node during the same observation period, all separately provided by\n NFV MANO (see clause 7.1.2 of ETSI GS NFV-IFA 027 \\[11\\]),\n \\- EC<sub>NFVINode,measured</sub> is the energy consumption of the NFVI\n node on which the virtual compute resource runs, measured during the\n same observation period, as per ETSI ES 202 336-12 \\[10\\].",
+		"Section": "Energy Efficiency (EE) KPI (6.7) >> 5G Energy Consumption (EC) (6.7.3) >> NF Energy Consumption (EC) (6.7.3.1) >> Estimated virtual compute resource instance energy consumption based on mean vMemory usage (6.7.3.1.5)",
+		"Title": "Estimated virtual compute resource instance energy consumption based on mean vMemory usage (6.7.3.1.5)"
+	},
+	{
+		"Name": "EC<sub>virtualCompute,estimated,VMemoryUsageMean</sub>",
+		"Description": "A KPI that gives an estimation of the energy consumption of a\n virtual compute resource instance. The energy consumption of a virtual\n compute resource instance X is estimated as a proportion of the energy\n consumption of the NFVI node on which the virtual compute resource\n instance X runs. This proportion is obtained by dividing the vMemory\n mean usage of the virtual compute resource instance X, by the sum of the\n vMemory mean usage of all virtual compute resource instances running on\n the same NFVI Node as X. The unit of this KPI is J.",
+		"Formula": "![](./attachments/28552-i50/media/image122.emf)",
+		"KPI Object": "ManagedFunction",
+		"Remark": "\\- VMemoryUsageMean is the mean memory usage of the virtual compute\n resource instance during the observation period, provided by NFV MANO,\n \\- ![](./attachments/28552-i50/media/image123.emf)is the sum of the mean\n memory usage of all virtual compute resource instances running on the\n same NFVI node during the same observation period, all separately\n provided by NFV MANO (see clause 7.1.4 of \\[11\\],\n \\- EC<sub>NFVINode,measured</sub> is the energy consumption of the NFVI\n node on which the virtual compute resource runs, measured during the\n same observation period, as per ETSI ES 202 336-12 \\[10\\]. The\n measurement defined in TS 28.552 \\[6\\] clause 5.1.1.19.3 can be used to\n measure EC<sub>NFVINode,measured</sub>.",
+		"Section": "Energy Efficiency (EE) KPI (6.7) >> 5G Energy Consumption (EC) (6.7.3) >> NF Energy Consumption (EC) (6.7.3.1) >> Estimated virtual compute resource instance energy consumption based on mean vDisk usage (6.7.3.1.6)",
+		"Title": "Estimated virtual compute resource instance energy consumption based on mean vDisk usage (6.7.3.1.6)"
+	},
+	{
+		"Name": "EC<sub>virtualCompute,estimated,VDiskUsageMean</sub>",
+		"Description": "A KPI that gives an estimation of the energy consumption of a\n virtual compute resource instance. The energy consumption of a virtual\n compute resource instance X is estimated as a proportion of the energy\n consumption of the NFVI node on which the virtual compute resource\n instance X runs. This proportion is obtained by dividing the vDisk mean\n usage of the virtual compute resource instance X, by the sum of the\n vDisk mean usage of all virtual compute resource instances running on\n the same NFVI Node as X. The unit of this KPI is J.",
+		"Formula": "![](./attachments/28552-i50/media/image124.emf)",
+		"KPI Object": "ManagedFunction",
+		"Remark": "\\- VDiskUsageMean is the mean disk usage of the virtual compute resource\n instance during the observation period, provided by NFV MANO,\n \\- ![](./attachments/28552-i50/media/image125.emf)is the sum of the mean\n disk usage of all virtual compute resource instances running on the same\n NFVI Node during the same observation period, all separately provided by\n NFV MANO (see clause 7.1.6 of \\[11\\],\n \\- EC<sub>NFVINode,measured</sub> is the energy consumption of the NFVI\n node on which the virtual compute resource runs, measured during the\n same observation period, as per ETSI ES 202 336-12 \\[10\\]. The\n measurement defined in TS 28.552 \\[6\\] clause 5.1.1.19.3 can be used to\n measure EC<sub>NFVINode,measured</sub>.",
+		"Section": "Energy Efficiency (EE) KPI (6.7) >> 5G Energy Consumption (EC) (6.7.3) >> NF Energy Consumption (EC) (6.7.3.1) >> Estimated virtual compute resource instance energy consumption based on I/O traffic volume (6.7.3.1.7)",
+		"Title": "Estimated virtual compute resource instance energy consumption based on I/O traffic volume (6.7.3.1.7)"
+	},
+	{
+		"Name": "EC<sub>virtualCompute,estimated,VDiskUsageMean</sub>",
+		"Description": "A KPI that gives an estimation of the energy consumption of a\n virtual compute resource instance. The energy consumption of a virtual\n compute resource instance X is estimated as a proportion of the energy\n consumption of the NFVI node on which the virtual compute resource\n instance X runs. This proportion is obtained by dividing the I/O traffic\n volume of the virtual compute resource instance X, by the sum of the I/O\n traffic volume of all virtual compute resource instances running on the\n same NFVI Node as X. The unit of this KPI is J.",
+		"Formula": "![](./attachments/28552-i50/media/image126.emf)",
+		"KPI Object": "ManagedFunction",
+		"Remark": "\\- IOTrafficVolume is the sum of the incoming and outgoing traffic\n volumes of the virtual compute resource instance during the observation\n period, provided by NFV MANO.\n \\- Incoming traffic volume is obtained by measuring the number of\n incoming bytes on virtual compute (VNetByteIncoming - cf. clause 7.1.8\n of \\[11\\]) during the observation period.\n \\- Outgoing traffic volume is obtained by measuring the number of\n outgoing bytes on virtual compute (VNetByteOutgoing - cf. clause 7.1.9\n of \\[11\\]) during the observation period,\n ![](./attachments/28552-i50/media/image127.emf)\n \\- ![](./attachments/28552-i50/media/image128.emf)is the sum of the\n incoming and outgoing traffic volumes of all virtual compute resource\n instances running on the same NFVI node during the same observation\n period, all separately provided by NFV MANO (see clause 7.1.8 and 7.1.9\n of \\[11\\]),\n \\- EC<sub>NFVINode,measured</sub> is the energy consumption of the NFVI\n node on which the virtual compute resource runs, measured during the\n same observation period, as per ETSI ES 202 336-12 \\[10\\]. The\n measurement defined in TS 28.552 \\[6\\] clause 5.1.1.19.3 can be used to\n measure EC<sub>NFVINode,measured</sub>.",
+		"Section": "Energy Efficiency (EE) KPI (6.7) >> 5G Energy Consumption (EC) (6.7.3) >> 5GC Energy Consumption (EC) (6.7.3.2) >> Definition (6.7.3.2.1)",
+		"Title": "Definition (6.7.3.2.1)"
+	},
+	{
+		"Name": "EC<sub>5GC</sub>",
+		"Description": "This KPI describes the Energy Consumption (EC) of the 5G Core\n Network (CN). It is obtained by summing up the Energy Consumption of all\n the Network Functions (EC<sub>NF</sub>) that compose the 5G core\n network. For the Energy Consumption (EC) of Network Functions, see\n clause 6.7.3.1. The unit of this KPI is J.",
+		"Formula": "![](./attachments/28552-i50/media/image129.emf)",
+		"KPI Object": "Subnetwork",
+		"Section": "Energy Efficiency (EE) KPI (6.7) >> 5G Energy Consumption (EC) (6.7.3) >> Network Slice Energy Consumption (EC) (6.7.3.3)",
+		"Title": "Network Slice Energy Consumption (EC) (6.7.3.3)"
+	},
+	{
+		"Name": "EC<sub>ns</sub>",
+		"Description": "This KPI describes the Energy Consumption (EC) of the network slice\n It is obtained by summing up the Energy Consumption of all the Network\n Functions (EC<sub>NF</sub>) that compose the network slice. The unit of\n this KPI is J.",
+		"Formula": "![](./attachments/28552-i50/media/image130.emf)\n As a network slice may be composed of a RAN network slice subnet, a\n Transport Network (TN) network slice subnet and a 5GC network slice\n subnet, they all participate to the energy consumption of the network\n slice. However, the definition and way to measure the energy consumption\n of the TN segment is not in the scope of the present document.\n The definition of EC<sub>ns</sub> based on the following principles:\n \\- For all gNBs in the network slice, clause 5.1.1.19.3 (PNF Energy\n consumption) of TS 28.552 \\[6\\] applies. This measurement is obtained\n according to the method defined in ETSI ES 202 336-12 \\[10\\] – clauses\n 4.4.3.1, 4.4.3.4, Annex A;\n \\- In case a 5GC NF is composed of Virtualized Network Functions (VNF)\n and/or Physical Network Functions (PNF), clause 6.7.3.1 of this document\n defines the NF Energy Consumption (EC);\n \\- In case a NF is dedicated to a network slice, the energy consumption\n of the NF is entirely attributable to the network slice;\n \\- In case a NF is shared between multiple network slices, the\n participation of the NF to the energy consumption of the network slice\n has to be estimated, as it can't be measured:\n \\- In case of a gNB shared between multiple network slices, the energy\n consumption attributable to each network slice is estimated as a\n proportion of the total gNB energy consumption, where the proportion is\n calculated as the data volume of the network slice relatively to the\n total data volume carried by the gNB,\n \\- In case of a AMF shared between multiple network slices, the energy\n consumption attributable to each network slice is estimated as a\n proportion of the total estimated AMF energy consumption, where the\n proportion is calculated as the mean number of registered subscribers of\n the network slice relatively to the overall mean number of registered\n subscribers of the AMF during the same time period (see TS 28.552 \\[6\\]\n clause 5.2.1.1 for the definition of the mean number of registered\n subscribers),\n \\- In case of a SMF shared between multiple network slices, the energy\n consumption attributable to each network slice is estimated as a\n proportion of the total estimated SMF energy consumption, where the\n proportion is calculated as the mean number of PDU sessions of the\n network slice relatively to the overall mean number of PDU sessions of\n the SMF during the same time period (see TS 28.552 \\[6\\] clause 5.3.1.1\n for the definition of the mean number of PDU sessions),\n \\- In case of a UPF shared between multiple slices, the energy\n consumption attributable to each network slice is estimated as a\n proportion of the total estimated UPF energy consumption, where the\n proportion is calculated as the data volume of the network slice\n relatively to the overall data volume of the UPF during the same time\n period.\n \\- In case of a UPF with N3 interface(s), the data volume of the UPF is\n obtained by summing up, for all N3 interface(s), the number of octets of\n incoming GTP data packets on the N3 interface, from (R)AN to UPF (see TS\n 28.552 \\[6\\] clause 5.4.1.3) and the number of octets of outgoing GTP\n data packets on the N3 interface, from UPF to (R)AN (see TS 28.552 \\[6\\]\n clause 5.4.1.4)\n \\- In case of a PSA UPF with no N3 interface(s), the data volume of the\n UPF is obtained by summing up, for all N9 interface(s), the number of\n octets of incoming GTP data packets on the N9 interface for PSA UPF (see\n TS 28.552 \\[6\\] clause 5.4.4.2.3) and the number of octets of outgoing\n GTP data packets on the N9 interface for PSA UPF (see TS 28.552 \\[6\\]\n clause 5.4.4.2.4)\n \\- The case of other 5GC NFs shared between network slices is not\n addressed in the present document.",
+		"KPI Object": "NetworkSlice",
+		"Section": "Energy Efficiency (EE) KPI (6.7) >> 5G Energy Consumption (EC) (6.7.3) >> NG-RAN Energy Consumption (EC) (6.7.3.4) >> NG-RAN EC (6.7.3.4.1)",
+		"Title": "NG-RAN EC (6.7.3.4.1)"
+	},
+	{
+		"Name": "EC<sub>NG-RAN</sub>",
+		"Description": "This KPI describes the Energy Consumption (EC) of the NG-RAN. It is\n obtained by summing up the Energy Consumption of all the gNBs that\n constitute the NG-RAN. The unit of this KPI is J.",
+		"Formula": "![](./attachments/28552-i50/media/image131.png)![](./attachments/28552-i50/media/image131.png)",
+		"KPI Object": "Subnetwork",
+		"Section": "Energy Efficiency (EE) KPI (6.7) >> 5G Energy Consumption (EC) (6.7.3) >> NG-RAN Energy Consumption (EC) (6.7.3.4) >> gNB EC (6.7.3.4.2)",
+		"Title": "gNB EC (6.7.3.4.2)"
+	},
+	{
+		"Name": "EC<sub>gNB</sub>",
+		"Description": "This KPI describes the Energy Consumption (EC) of the gNB. It is\n obtained by summing up the Energy Consumption of all the Network\n Functions (NF) that constitute the gNB. For the Energy Consumption of\n Network Functions (EC<sub>NF</sub>), see clause 6.7.3.1. The unit of\n this KPI is J.",
+		"Formula": "![](./attachments/28552-i50/media/image132.png)![](./attachments/28552-i50/media/image132.png)",
+		"KPI Object": "ManagedElement",
+		"Section": "Energy Efficiency (EE) KPI (6.7) >> 5GC Energy Efficiency (EE) (6.7.4) >> Energy Efficiency of 5GC based on the useful output of 5GC user plane (6.7.4.2)",
+		"Title": "Energy Efficiency of 5GC based on the useful output of 5GC user plane (6.7.4.2)"
+	},
+	{
+		"Name": "EE<sub>5GC,UO,UP,DV</sub>",
+		"Description": "A KPI that shows the energy efficiency of 5GC. This KPI is based on\n the useful output of 5GC user plane. The useful output of the 5GC user\n plane is obtained by summing up UL and DL data volumes at N3\n interface(s).![](./attachments/28552-i50/media/image134.png)\n This KPI is obtained by the sum of UL and DL data volumes at N3\n interface(s), divided by the energy consumption of 5GC. The unit of this\n KPI is bit/J.",
+		"Formula": "![](./attachments/28552-i50/media/image135.png)",
+		"KPI Object": "SubNetwork",
+		"Remark": "In case of redundant transmission paths over the N3 interface for\n high reliability communication (cf. TS 23.501 \\[7\\] clause 5.33.2), it\n is expected that the data volume is counted once. In particular:\n \\- In case of Dual Connectivity based end to end Redundant User Plane\n Paths (see TS 23.501 \\[7\\] clause 5.33.2.1), in which a UE may set up\n two redundant PDU Sessions over the 5G network, the Data Volume related\n to only one PDU session is to be considered;\n \\- In case of redundant transmission with two N3 tunnels between the PSA\n UPF and a single NG-RAN node (cf. TS 23.501 \\[7\\] figure 5.33.2.2-1)\n which are associated with a single PDU Session, the Data Volume related\n to only one N3 tunnel is to be considered;\n \\- In case of two N3 and N9 tunnels between NG-RAN and PSA UPF for\n redundant transmission (see TS 23.501 \\[7\\] figure 5.33.2.2-2)\n associated with a single PDU Session, the Data Volume related to only\n one N3 tunnel is to be considered.\n For the measurement of the energy efficiency of the 5G core network, the\n 3GPP management system in charge of collecting the data volume\n measurements listed here above shall consider them only once in case of\n redundant transmission over the N3 interface.",
+		"Section": "Reliability KPI (6.8) >> Definition (6.8.1) >> Packet transmission reliability KPI in DL on Uu (6.8.1.1)",
+		"Title": "Packet transmission reliability KPI in DL on Uu (6.8.1.1)"
+	},
+	{
+		"Name": "DLRelPSR_Uu",
+		"Description": "This KPI describes the Reliability based on Packet Success Rate(PSR)\n Percentage between gNB and UE. It is used to evaluate the Uu interface\n reliability contribution to the total network downlink reliability. It\n is the percentage of RLC SDU packets which are successfully received in\n UE out of the total RLC SDU packets transmitted by gNB. It is a measure\n of the DL packet delivery success i.e. PSR% over Uu interface. It is a\n percentage value (%). This KPI can optionally be split into KPIs per QoS\n level (mapped 5QI or QCI in NR option 3) and per S-NSSAI.",
+		"Formula": "Below is the equation for downlink Reliability in RAN based on PSR\n percentage between gNB and UE.\n DLRelPSR\\_Uu =\n ![](./attachments/28552-i50/media/image136.png)![](./attachments/28552-i50/media/image136.png)\n × 100 , where N(T1,drbid) & Dloss(T1,drbid) are as defined in TS 38.314.\n or optionally DLRelPSR\\_Uu.QoS =\n ![](./attachments/28552-i50/media/image137.png)![](./attachments/28552-i50/media/image137.png)\n × 100, where QoS\n identifies the target QoS quality of service class.\n or optionally DLRelPSR\\_Uu.SNSSAI =\n ![](./attachments/28552-i50/media/image138.png)![](./attachments/28552-i50/media/image138.png)\n × 100,\n where SNSSAI identifies the S-NSSAI.",
+		"KPI Object": "NRCellDU",
+		"Section": "Reliability KPI (6.8) >> Definition (6.8.1) >> Packet transmission reliability KPI in UL on Uu (6.8.1.2)",
+		"Title": "Packet transmission reliability KPI in UL on Uu (6.8.1.2)"
+	},
+	{
+		"Name": "ULRelPSR_Uu",
+		"Description": "This KPI describes the Reliability based on Packet Success Rate\n Percentage between UE and gNB. It is used to evaluate the Uu interface\n reliability contribution to the total network uplink reliability. It is\n the percentage of PDCP SDU packets which are successfully received in\n gNB out of the total PDCP SDU packets transmitted by UE. It is a measure\n of the UL packet delivery success i.e. PSR% over Uu interface. It is a\n percentage value (%). This KPI can optionally be split into KPIs per QoS\n level (mapped 5QI or QCI in NR option 3) and per S-NSSAI.",
+		"Formula": "ULRelPSR_Uu = DRB.PacketSuccessRateUlgNBUu × 100 , where\n DRB\\_PacketSuccessRateUlgNBUu is as defined in TS 28.552 \\[6\\].\n or optionally ULRelPSR\\_Uu.QoS = DRB.PacketSuccessRateUlgNBUu.QOS × 100,\n where QoS identifies the target QoS quality of service class.\n or optionally ULRelPSR\\_Uu.SNSSAI = DRB.PacketSuccessRateUlgNBUu.SNSSAI\n × 100, where SNSSAI identifies the S-NSSAI.",
+		"KPI Object": "NRCellCU",
+		"Section": "Reliability KPI (6.8) >> Definition (6.8.1) >> Packet transmission reliability KPI in DL on N3 (6.8.1.3)",
+		"Title": "Packet transmission reliability KPI in DL on N3 (6.8.1.3)"
+	},
+	{
+		"Name": "DLRelPSR_N3",
+		"Description": "This KPI describes the Reliability based on Packet Success Rate(PSR)\n Percentage between UPF and gNB. It is used to evaluate the N3 interface\n reliability contribution to the total network downlink reliability. It\n is the percentage of GTP data PDUs which are successfully received by\n gNB out of the total GTP data PDUs transmitted by UPF over N3 interface.\n It is a measure of the DL packet delivery success i.e. PSR% over N3\n interface. It is a percentage value (%). This KPI can optionally be\n split into KPIs per QoS level (mapped 5QI or QCI in NR option 3) and per\n S-NSSAI.",
+		"Formula": "DLRelPSR_N3 = ![](./attachments/28552-i50/media/image139.png)\n where GTP.OutDataPktN3UPF, GTP.InDataPktPacketLossN3gNB are as defined\n in TS 28.552\n or optionally,\n DLRelPSR\\_N3.QoS = ![](./attachments/28552-i50/media/image140.png)\n where QoS identifies the target QoS quality of service class.\n or optionally,\n DLRelPSR\\_N3.SNSSAI = ![](./attachments/28552-i50/media/image141.png)\n where SNSSAI identifies the S-NSSAI.",
+		"KPI Object": "UPFFunction, GNBCUUPFunction",
+		"Section": "Reliability KPI (6.8) >> Definition (6.8.1) >> Packet transmission reliability KPI in UL on N3 (6.8.1.4)",
+		"Title": "Packet transmission reliability KPI in UL on N3 (6.8.1.4)"
+	},
+	{
+		"Name": "ULRelPSR_N3",
+		"Description": "This KPI describes the Reliability based on Packet Success Rate(PSR)\n Percentage between gNB and UPF. It is used to evaluate the N3 interface\n reliability contribution to the total network uplink reliability. It is\n the percentage of GTP data PDUs which are successfully received by UPF\n out of the total GTP data PDUs transmitted by gNB over N3 interface. It\n is a measure of the UL packet delivery success i.e. PSR% over N3\n interface. It is a percentage value (%). This KPI can optionally be\n split into KPIs per QoS level (mapped 5QI or QCI in NR option 3) and per\n S-NSSAI.",
+		"Formula": "ULRelPSR_N3 = ![](./attachments/28552-i50/media/image142.png)\n where GTP.InDataPktN3UPF , GTP.InDataPktPacketLossN3UPF are as defined\n in TS 28.552\n or optionally,\n ULRelPSR\\_N3.QoS = ![](./attachments/28552-i50/media/image143.png)\n where QoS identifies the target QoS quality of service class.\n or optionally,\n ULRelPSR\\_N3.SNSSAI = ![](./attachments/28552-i50/media/image144.png)\n where SNSSAI identifies the S-NSSAI.",
+		"KPI Object": "UPFFunction",
+		"Section": "Average air-interface efficiency achievable per UE within the observed NRCellDU (6.9)",
+		"Title": "Average air-interface efficiency achievable per UE within the observed NRCellDU (6.9)"
+	},
+	{
+		"Name": "AvgCqiEfficiency_Cell",
+		"Description": "The KPI describes the average air-interface efficiency for a\n NRCellDU according to CQI tables. The KPI takes into account both the\n channel rank(RI) and the channel quality(CQI), and can comprehensively\n reflect the overall channel quality of the cell. It is a real value. The\n unit of KPI refer to that of efficiency defined in TS 38.214. The KPI\n type is MEAN.",
+		"Formula": "Below is the equation for average air-interface efficiency for\n NRCellDU:\n Where is the efficiency used in the CQI table defined in TS 38.214\n \\[14\\].",
+		"KPI Object": "NRCellDU",
+		"Section": "Average air-interface efficiency achievable per UE within the observed NRCellDU (6.9) >> Air interface downlink average efficiency based on MCS (6.9.1)",
+		"Title": "Air interface downlink average efficiency based on MCS (6.9.1)"
+	},
+	{
+		"Name": "AvgDlMcsEfficiency_Cell",
+		"Description": "The KPI describes the air-interface downlink efficiency for a\n NRCellDU according to PDSCH MCS index tables in TS 38.214 \\[14\\]. The\n KPI takes spatial multiplexing into account based on the MCS\n distribution measurement in TS 28.552 \\[6\\], and can comprehensively\n reflect the average efficiency of the cell both in SU MIMO and MU MIMO\n scenarios. It is a real value. The unit of this KPI refers to that of\n efficiency defined in TS 38.214 \\[14\\]. The KPI type is MEAN.",
+		"Formula": "Below is the equation for air-interface downlink average efficiency\n based on MCS for NRCellDU:\n Where X represents the index of rank value (1 to 8), Y represents the\n index of table value (1 to 4), and Z represents the index of the MCS\n value (0 to 31).\n is the efficiency when table index =Y and MCS index =Z used in PDSCH MCS\n tables defined in 5.1.3.1 in TS 38.214 \\[14\\].\n is the total used DL PRBs in statistical period T, which is specified in\n 5.1.1.2.1 in TS 28.552 \\[6\\].",
+		"KPI Object": "NRCellDU\n NOTE: The MCS efficiency here is based on scheduled PRB and decided by\n the MCS index which is defined in TS 38.214 \\[14\\] in clause 5.1.3.1.",
+		"Section": "Average air-interface efficiency achievable per UE within the observed NRCellDU (6.9) >> Air interface uplink average efficiency based on MCS (6.9.2)",
+		"Title": "Air interface uplink average efficiency based on MCS (6.9.2)"
+	}
+]

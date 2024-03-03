@@ -1,0 +1,106 @@
+3GPP 20.554 KPIs:
+    - KPI: 
+        name: DelayE2EUlNs,
+        type: E2E delay for network slice,
+        title: Average e2e uplink delay for a network slice,
+        section: 6.3.1.8.1 ,
+        description: |
+            This KPI describes the average e2e UL packet delay between the PSA
+            UPF and the UE for a network slice. It is the weighted average packet
+            delay from the time when an UL RLC SDU was scheduled at the UE until the
+            time when the corresponding GTP PDU was received by the PSA UPF. The KPI
+            type is MEAN in unit of 0.1 ms.
+        Formula definition: |
+            This KPI is the weighted average of UL packet delay between PSA UPF
+            and UE, for all N3 interfaces (modelled by EP\_N3 MOIs) and N9
+            interfaces (modelled by EP\_N9 MOIs) of all PSA UPFs supporting the
+            network slice (modelled by NetworkSlice MOI) identified by the S-NSSAI.
+            
+            > This KPI is calculated in the equation below, where Wn3 and Wn9 are
+            > the measurements for the weighted average, Wn3 is one of the
+            > following:
+            
+            \- the data volume of UL GTP PDUs received by PSA UPF on the N3
+            interface;
+            
+            \- the number of UL GTP PDUs received by PSA UPF on the N3 interface;
+            
+            \- any other types of weight defined by the consumer of KPI.
+            
+            > And Wn9 is one of the following:
+            
+            \- the data volume of UL GTP PDUs received by PSA UPF on the N9
+            interface;
+            
+            \- the number of UL GTP PDUs received by PSA UPF on the N9 interface;
+            
+            \- any other types of weight defined by the consumer of KPI.
+            
+            > DelayE2EUlNs =
+            > ![](./attachments/28552-i50/media/image51.png)![](./attachments/28552-i50/media/image51.png)
+            >
+            > Where the *SNSSAI* identifies the S-NSSAI.
+        KPI Object: NetworkSlice
+        Remark: None
+    - KPI:
+        name: ULDelay\_NR\_SNw,
+        type: Integrated uplink delay in RAN,
+        title: Uplink delay in NG-RAN for a sub-network,
+        section: 6.3.1.7.1 ,
+        description: |
+            This KPI describes the average packet transmission delay through the
+            RAN part from the UE for a sub-network. It is used to evaluate delay
+            performance of NG-RAN in uplink. It is the weighted average packet delay
+            from when an UL RLC SDU was scheduled, as per the scheduling grant
+            provided, until time when the corresponding PDCP SDU was sent to the
+            core network from gNB-CU-UP. It is a time interval (0.1 ms). The KPI
+            type is MEAN. This KPI can optionally be split into KPIs per QoS level
+            (mapped 5QI or QCI in NR option 3) and per S-NSSAI.
+        Formula definition: |
+            Below are the equations for average "Integrated uplink delay in RAN"
+            for this KPI on SubNetwork level. The "Integrated uplink delay in RAN"
+            is the sum of average UL delay in gNB-CU-UP of the sub-network
+            (ULDelay\_gNBCUUP\_SNw) and the average UL delay in gNB-DU of the
+            sub-network (ULDelay\_gNBDU\_SNw):
+            
+            ULDelay\_NR\_SNw = ULDelay\_gNBCUUP\_SNw + ULDelay\_gNBDU\_SNw
+            
+            or optionally ULDelay\_ NR\_SNw.*QOS* = ULDelay\_gNBCUUP\_SNw.*QOS* +
+            ULDelay\_gNBDU\_SNw.*QOS* where *QOS* identifies the target quality of
+            service class.
+            
+            > or optionally ULDelay\_NR\_SNw.*SNSSAI* =
+            > ULDelay\_gNBCUUP\_SNw.*SNSSAI* + ULDelay\_gNBDU\_SNw.*SNSSAI* where
+            > *SNSSAI* identifies the S-NSSAI.
+        KPI Object: SubNetwork
+        Remark: None
+    - KPI:
+        name: ULDelay\_NR\_Nss,
+        type: Integrated uplink delay in RAN,
+        title: Uplink delay in NG-RAN for a network slice subnet,
+        section: 6.3.1.7.2 ,
+        description: |
+            This KPI describes the average packet transmission delay through the
+            RAN part from the UE for a network slice subnet. It is used to evaluate
+            delay performance of NG-RAN in uplink. It is the weighted average packet
+            delay from when an UL RLC SDU was scheduled, as per the scheduling grant
+            provided, until time when the corresponding PDCP SDU was sent to the
+            core network from gNB-CU-UP. It is a time interval (0.1 ms). The KPI
+            type is MEAN. This KPI can optionally be split into KPIs per QoS level
+            (mapped 5QI or QCI in NR option 3) and per S-NSSAI.
+        Formula definition: |
+            Below is the equation for average “Integrated uplink delay in RAN”
+            for this KPI on NetworkSliceSubNet level. The “Integrated uplink delay
+            in RAN” for network slice subnet is the sum of average UL delay in
+            gNB-CU-UP of the network slice subnet (ULDelay\_gNBCUUP\_Nss) and the
+            average UL delay in gNB-DU of the network slice subnet
+            (ULDelay\_gNBDU\_Nss):
+            
+            ULDelay\_NR\_Nss.*SNSSAI* = ULDelay\_gNBCUUP\_Nss.*SNSSAI* +
+            ULDelay\_gNBDU\_Nss.*SNSSAI* where *SNSSAI* identifies the S-NSSAI that
+            the network slice subnet supports.
+        KPI Object: NetworkSliceSubnet
+        Remark: None
+        
+
+    

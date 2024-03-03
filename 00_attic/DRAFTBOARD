@@ -1,0 +1,23 @@
+
+
+for await (const line of lines) {
+  //lines.push(line);
+
+  if( line.match(/ Foreword/)){
+    STATUS_INDEX_END = true;
+  }
+
+  if( line.match(/ Foreword/)){
+    STATUS_INDEX_END = true;
+  }
+
+  if( STATUS_STARTED ){
+
+    if(line.match(/^\s*6(\.?[0-9]*){1,} .*/)){
+      console.log("LINE ====> " + line)
+    } 
+
+    if(line.match(/^\s*[#]*\s*[0-9]+[0-9]*(\.?[0-9]*){1,} .*/)){
+    }
+  }
+}
